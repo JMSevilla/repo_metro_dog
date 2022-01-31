@@ -9,7 +9,10 @@
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script src="https://unpkg.com/element-ui/lib/umd/locale/en.js"></script>
 
+<script src="resources/js/environment.js" type="module"></script>
 <script src="resources/js/main.js" type="module"></script>
+
+<script src="resources/js/vue/v_index.js" type="module"></script>
 
 </body>
 </html>
