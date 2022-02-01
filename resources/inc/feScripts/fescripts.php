@@ -26,9 +26,22 @@
     const db = firebaseApp.firestore();
     const auth = firebaseApp.auth();
 </script> -->
-
+<script src="resources/js/environment.js" type="module"></script>
 <script src="resources/js/main.js" type="module"></script>
+<script src="resources/js/Response.js" type="module"></script>
 
+<?php
+if ($indentifier == 1) {
+?>
+    <script src="resources/js/vue/v_index.js" type="module"></script>
+<?php
+} else {
+
+?>
+    <script src="resources/js/vue/v_admin_reg.js" type="module"></script>
+<?php
+}
+?>
 </body>
 
 </html>
