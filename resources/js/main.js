@@ -1,18 +1,11 @@
 import state_initiate from "./environment.js"
 
-class ResponseJS { 
-    getResponse(payload) {
-        return new Promise(resolve => { 
-            const initiate = JSON.parse(payload)
-            return resolve(initiate)
-        })
-    }
-}
+
 
 class RequestConfiguration {
-    checkUserConfig(){
+    checkUserConfig(callback){
         const promise = new Promise(resolve => { 
-            $.post(state_initiate.instance.app + state_initiate.instance.HelperConfig.checkUserHelper, (response) => {
+            $.post(state_initiate.instance.app + state_initiate.instance.HelperConfig.checkUserHelper.Route, callback, (response) => {
                 return resolve(response)
             })
         })
@@ -23,7 +16,7 @@ class RequestConfiguration {
 class RequestVerifier extends RequestConfiguration { 
     checkUser_ClientRequest(payload) {
         if(payload.trigger === 1) {
-            return this.checkUserConfig();
+            return this.checkUserConfig(payload);
         }
     }
 }

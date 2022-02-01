@@ -1,6 +1,6 @@
 
 const instance = { 
-    app : 'app/Helpers',
+    app : 'app/HTTP/Helpers',
     HelperConfig : {
         checkUserHelper : {
             Route : '/checkUser_Helper.php'

@@ -3,27 +3,31 @@
 include_once "../../Database/db.php";
 include_once "../../Database/queries.php";
 
-interface LoginControllerInterface { 
+interface LoginControllerInterface
+{
     public function checkUser();
 }
 
-class LoginController implements LoginControllerInterface { 
-    public function checkUser(){
+class LoginController implements LoginControllerInterface
+{
+    public function checkUser()
+    {
         $serverChecker = new Server();
         $QueryIdentifier = new Queries();
-        if($serverChecker->POSTCHECKER()) { 
-            if($QueryIdentifier->checkUser("users", "checkUser")) { 
-                if(DatabaseMigration::php_exec()) { 
-                    if(DatabaseMigration::php_row_checker()) { 
+        $dbHelper = new DatabaseMigration();
+        if ($serverChecker->POSTCHECKER()) {
+            if ($dbHelper->php_prepare($QueryIdentifier->checkUser("checkUser"))) {
+                if ($dbHelper->php_exec()) {
+                    if ($dbHelper->php_row_checker()) {
                         //admin exist
-                        echo DatabaseMigration::php_responses(
+                        echo $dbHelper->php_responses(
                             true,
                             "single",
                             (object)[0 => array("key" => "admin_exist")]
                         );
-                    } else { 
+                    } else {
                         //admin not exist
-                        echo DatabaseMigration::php_responses(
+                        echo $dbHelper->php_responses(
                             true,
                             "single",
                             (object)[0 => array("key" => "admin_not_exist")]

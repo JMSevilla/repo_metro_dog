@@ -1,19 +1,22 @@
 <?php
 
-class DatabaseParams { 
-    public $host = "localhost";
-    public $username = "root";
-    public $pwd = "";
-    public $db = "dbmetrodog";
-    public $stmt;
-    public $helper;
+class DatabaseParams
+{
+    public static $host = "localhost";
+    public static $username = "root";
+    public static $pwd = "";
+    public static $db = "dbmetrodog";
+    public static $stmt;
+    public static $helper;
 }
 
-class DatabaseMigration extends DatabaseParams { 
+class DatabaseMigration
+{
 
-    public function connect(){
+    public function connect()
+    {
         try {
-            $connectionString = "mysql:host=" . DatabaseParams::$host . ";dbname=" . DatabaseParams::$pwd;
+            $connectionString = "mysql:host=" . DatabaseParams::$host . ";dbname=" . DatabaseParams::$db;
             DatabaseParams::$helper = new PDO($connectionString, DatabaseParams::$username, DatabaseParams::$pwd);
             DatabaseParams::$helper->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return DatabaseParams::$helper;
@@ -21,27 +24,30 @@ class DatabaseMigration extends DatabaseParams {
             die("Could not connect" . $th->getMessage());
         }
     }
-    public function php_prepare($sql){
+    public function php_prepare($sql)
+    {
         return DatabaseParams::$stmt = $this->connect()->prepare($sql);
     }
 
-    public function php_bind($param, $val, $type = null) {
-        if(is_null($type)){
-            switch(true){
+    public function php_bind($param, $val, $type = null)
+    {
+        if (is_null($type)) {
+            switch (true) {
                 case $type == 1:
                     $type = PDO::PARAM_INT;
                     break;
                 case $type == 2:
                     $type = PDO::PARAM_BOOL;
                     break;
-                default: 
+                default:
                     $type = PDO::PARAM_STR;
-                break;
+                    break;
             }
         }
         return DatabaseParams::$stmt->bindParam($param, $val, $type);
     }
-    public function php_exec(){
+    public function php_exec()
+    {
         return DatabaseParams::$stmt->execute();
     }
     public function php_responses(
@@ -55,7 +61,8 @@ class DatabaseMigration extends DatabaseParams {
                 break;
         }
     }
-    public function php_row_checker() { 
+    public function php_row_checker()
+    {
         return DatabaseParams::$stmt->rowCount() > 0;
     }
 }

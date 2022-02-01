@@ -9,10 +9,39 @@
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script src="https://unpkg.com/element-ui/lib/umd/locale/en.js"></script>
 
+<!-- <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.5/firebase-auth-compat.js"></script>
+<script>
+    var firebaseConfig = {
+        apiKey: "AIzaSyDl1odIRtpB-HVG9n1ylwHvw5O1P7RBB2w",
+        authDomain: "burgermania.com",
+        projectId: "capstonefrontend-394b2",
+        storageBucket: "capstonefrontend-394b2.appspot.com",
+        messagingSenderId: "1092436291258",
+        appId: "1:1092436291258:web:14a33bab0404c047b1dc83"
+    };
+    const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+    const db = firebaseApp.firestore();
+    const auth = firebaseApp.auth();
+</script> -->
 <script src="resources/js/environment.js" type="module"></script>
 <script src="resources/js/main.js" type="module"></script>
+<script src="resources/js/Response.js" type="module"></script>
 
-<script src="resources/js/vue/v_index.js" type="module"></script>
+<?php
+if ($indentifier == 1) {
+?>
+    <script src="resources/js/vue/v_index.js" type="module"></script>
+<?php
+} else {
 
+?>
+    <script src="resources/js/vue/v_admin_reg.js" type="module"></script>
+<?php
+}
+?>
 </body>
+
 </html>

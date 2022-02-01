@@ -1,4 +1,5 @@
-<?php include("components/header.php"); ?>
+<?php include("components/header.php");
+$indentifier = 1; ?>
 
 <?php include("views/index_views.php"); ?>
 
