@@ -75,12 +75,10 @@ new Vue({
                     {required: true, message: 'Please provide your username'}
                 ],
                 password : [
-                    // {validator: validateNewPwd, trigger: 'blur'}, 
                     {required: true, message: 'Please provide your password'}
                     
                 ],
                 conpass : [
-                    // {validator: validateConfirmPwd, trigger: 'blur'}, 
                     {required: true, message: 'Please confirm your password'}
                 ],
                 sec_question: [
