@@ -1,5 +1,5 @@
 <div>
-    <el-form status-icon :model="adminTask" :rules="rules" ref="ruleForm" label-position="top" method="POST">
+    <el-form status-icon :model="adminTask" :rules="rules" ref="ruleForm" label-position="top">
         <div class="row">
             <div class="col-sm">
                 <el-form-item label="Firstname" prop="firstname">
