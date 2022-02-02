@@ -4,7 +4,7 @@ new Vue({
     el : '#v_adminreg',
     data(){
         return { 
-            active : 3,
+            active : 2,
             adminTask : {
                 firstname : '', lastname: '', primary_address : '', secondary_address: '',
                 contactNumber: '', email: '', username: '', password: '', conpass: '',
