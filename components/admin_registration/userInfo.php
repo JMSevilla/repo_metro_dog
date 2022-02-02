@@ -29,7 +29,8 @@
         <div class="row" style="margin-top: 20px;">
             <div class="col-sm">
                 <el-form-item label="Contact Number" prop="contactNumber">
-                    <el-input type="text" clearable placeholder="Enter contact number" v-model="adminTask.contactNumber" style="width: 100%; margin-bottom: 10px;">
+                    <el-input type="text" clearable placeholder="Enter contact number" v-model="adminTask.contactNumber" maxlength="11" minlength="11"
+                     style="width: 100%; margin-bottom: 10px;">
                     </el-input>
                 </el-form-item>
             </div>
