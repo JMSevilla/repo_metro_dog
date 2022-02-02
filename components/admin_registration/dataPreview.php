@@ -7,7 +7,7 @@
                 <el-input type="text" clearable style="margin-bottom: 10px;" v-model="adminTask.firstname" placeholder="First Name" disabled="true"></el-input>
                 <el-input type="text" clearable style="margin-bottom: 10px;" placeholder="Last Name" v-model="adminTask.lastname" disabled="true"></el-input>
                 <el-input type="textarea" :rows="2" placeholder="Primary address" style="width: 100%; margin-bottom: 10px;" v-model="adminTask.primary_address" disabled="true"></el-input>
-                <el-input type="textarea" :rows="2" placeholder="Secondary address" style="width: 100%; margin-bottom: 10px;" v-model="adminTask.secondary_address"disabled="true"></el-input>
+                <el-input type="textarea" :rows="2" placeholder="Secondary address" style="width: 100%; margin-bottom: 10px;" v-model="adminTask.secondary_address" disabled="true"></el-input>
                 <el-input type="text" clearable placeholder="Contact number" maxlength="11" minlength="11" v-model="adminTask.contactNumber" disabled="true"style="width: 100%; margin-bottom: 10px;">
                 </el-input>
                 <el-input type="text" placeholder="Email Address" style="width: 100%; margin-bottom: 10px;" v-model="adminTask.email" disabled="true"></el-input>
