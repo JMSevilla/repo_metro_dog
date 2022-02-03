@@ -6,6 +6,7 @@ include_once "../../Database/queries.php";
 interface IAdminRegController
 {
     public function IadminController($data);
+    public function IFetchController();
 }
 
 class AdminRegistrationController extends DatabaseMigration implements IAdminRegController
@@ -35,6 +36,24 @@ class AdminRegistrationController extends DatabaseMigration implements IAdminReg
                         true,
                         "single",
                         (object)[0 => array("key" => "success_registration")]
+                    );
+                }
+            }
+        }
+    }
+    public function IFetchController()
+    {
+        $serverHelper = new Server();
+        $queryIndicator = new Queries();
+        if ($serverHelper->POSTCHECKER()) {
+            if ($this->php_query($queryIndicator->fetchAllQuestions("fetch/questions"))) {
+                $this->php_exec();
+                if ($this->php_row_checker()) {
+                    $row = $this->php_fetchAll();
+                    echo $this->php_responses(
+                        true,
+                        "single",
+                        (object)[0 => array("key" => $row)]
                     );
                 }
             }
