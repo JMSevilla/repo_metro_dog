@@ -25,7 +25,7 @@ new Vue({
     
     return {
        
-            active : 2,
+            active : 1,
             adminTask : {
                 firstname : '', lastname: '', primary_address : '', secondary_address: '',
                 contactNumber: '', email: '', username: '', password: '', conpass: '',
@@ -75,12 +75,10 @@ new Vue({
                     {required: true, message: 'Please provide your username'}
                 ],
                 password : [
-                    // {validator: validateNewPwd, trigger: 'blur'}, 
                     {required: true, message: 'Please provide your password'}
                     
                 ],
                 conpass : [
-                    // {validator: validateConfirmPwd, trigger: 'blur'}, 
                     {required: true, message: 'Please confirm your password'}
                 ],
                 sec_question: [
@@ -97,7 +95,7 @@ new Vue({
             {
                 this.$notify.error({
                     title: 'Error',
-                    message: 'Password doesn\'t match',
+                    message: 'Password doesn\'t match', 
                     offset: 100
                   });
             }
