@@ -4,6 +4,11 @@
 interface QueryIndicator
 {
     public function checkUser($args);
+    public function InsertAdminReg($table, $args);
+    public function LoginQuery($table, $args);
+    public function checkToken($table, $args);
+    public function addNewToken($table, $args);
+    public function getTokenization($args);
 }
 interface ServerInterface
 {
@@ -16,6 +21,41 @@ class Queries implements QueryIndicator
     {
         if ($args === "checkUser") {
             $sql = "select * from users where userType=1";
+            return $sql;
+        }
+    }
+    public function InsertAdminReg($table, $args)
+    {
+        if ($args === "adminReg") {
+            $sql = "insert into " . $table . " values(default, :fname, :lname, :uname, :pwd, :uType, :uStatus, :imgURL, current_timestamp, :PA, :SA, :CN, :email, :SQ, :secA)";
+            return $sql;
+        }
+    }
+    public function LoginQuery($table, $args)
+    {
+        if ($args === "login/clientLogin") {
+            $sql = "select * from users where username=:uname";
+            return $sql;
+        }
+    }
+    public function checkToken($table, $args)
+    {
+        if ($args === "login/checkToken") {
+            $sql = "select * from tokenization where tokenOwner=:tokeowner";
+            return $sql;
+        }
+    }
+    public function addNewToken($table, $args)
+    {
+        if ($args === "login/addnewtoken") {
+            $sql = "insert into " . $table . " values (default, :token, :istokenvalid, current_timestamp, :tokenowner, :tokenownerid, :tokensavedplatform)";
+            return $sql;
+        }
+    }
+    public function getTokenization($args)
+    {
+        if ($args === "login/get/token") {
+            $sql = "select * from tokenization where tokenOwner=:ownerName and tokenOwnerId=:uId";
             return $sql;
         }
     }

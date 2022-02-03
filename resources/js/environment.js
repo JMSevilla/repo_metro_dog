@@ -4,6 +4,9 @@ const instance = {
     HelperConfig : {
         checkUserHelper : {
             Route : '/checkUser_Helper.php'
+        },
+        adminRegHelper : {
+            Route: '/adminReg_Helper.php'
         }
     }
 }

@@ -1,5 +1,6 @@
 ELEMENT.locale(ELEMENT.lang.en)
-
+import __constructJS from "../main.js"
+import responseConfiguration from "../Response.js"
 new Vue({
     el : '#v_adminreg',
 
@@ -25,11 +26,12 @@ new Vue({
     
     return {
        
-            active : 1,
+
+            active : 3,
             adminTask : {
-                firstname : '', lastname: '', primary_address : '', secondary_address: '',
-                contactNumber: '', email: '', username: '', password: '', conpass: '',
-                sec_question : '', sec_answer: ''
+                firstname : 'test firstname', lastname: 'test lastname', primary_address : 'test', secondary_address: '',
+                contactNumber: '09212142370', email: 'admin@gmail.com', username: 'admin', password: 'admin', conpass: 'admin',
+                sec_question : 'When is your birthday?', sec_answer: 'test',  trigger: 1
             },
             
             options: [{
@@ -86,7 +88,8 @@ new Vue({
                 ], sec_answer: [
                     {required: true, message : 'Please provide security answer'}
                 ]
-            }
+            },
+            fullscreenLoading: false
         }
     },
     methods: {
@@ -110,7 +113,34 @@ new Vue({
                 });
             }
         }, 
-        
+        onFinish: function() {
+            this.$confirm('Are you sure you want to save this as admin?', 'Warning', {
+                confirmButtonText: 'OK',
+                cancelButtonText: 'Cancel',
+                type: 'warning'
+              }).then(() => {
+                this.fullscreenLoading = true
+                setTimeout(() => {
+                    __constructJS.postAdmin_ClientRequest(this.adminTask).then((r) => {
+                        responseConfiguration.getResponse(r).then(__debounce => {
+                            switch(true) {
+                                case __debounce[0].key === "success_registration":
+                                    this.$notify.success({
+                                        title: 'Success',
+                                        message: 'Successfully Registered',
+                                        offset: 100
+                                      });
+                                      this.fullscreenLoading = false;
+                                      setTimeout(() => {
+                                        window.location.href = "http://localhost/metrodog"
+                                      }, 3000)
+                                      return true;
+                            }
+                        })
+                    })
+                }, 3000)
+              })
+        },
         onBack: function(){
             if(this.active == 1){
                 return false;
