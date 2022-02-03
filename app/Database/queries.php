@@ -11,6 +11,7 @@ interface QueryIndicator
     public function getTokenization($args);
     public function scanToken($args);
     public function getUserById($args);
+    public function fetchAllQuestions($args);
 }
 interface ServerInterface
 {
@@ -72,6 +73,13 @@ class Queries implements QueryIndicator
     {
         if ($args === "scan/token/getById") {
             $sql = "select * from users where userID=:uid";
+            return $sql;
+        }
+    }
+    public function fetchAllQuestions($args)
+    {
+        if ($args === "fetch/questions") {
+            $sql = "select distinct question from mdQuestions where questionStatus=1";
             return $sql;
         }
     }
