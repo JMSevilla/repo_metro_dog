@@ -42,6 +42,7 @@ if ($indentifier == 1) {
 <?php
 }
 ?>
+<script src="resources/js/vue/v_adminSelection.js" type="module"></script>
 </body>
 
 </html>

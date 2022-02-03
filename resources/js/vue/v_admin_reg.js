@@ -26,6 +26,7 @@ new Vue({
     
     return {
        
+
             active : 3,
             adminTask : {
                 firstname : 'test firstname', lastname: 'test lastname', primary_address : 'test', secondary_address: '',
@@ -97,7 +98,7 @@ new Vue({
             {
                 this.$notify.error({
                     title: 'Error',
-                    message: 'Password doesn\'t match',
+                    message: 'Password doesn\'t match', 
                     offset: 100
                   });
             }
