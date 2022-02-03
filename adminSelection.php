@@ -1,6 +1,6 @@
 <?php include("components/header.php");?>
-
-<div class="container" style="width: 60%; margin-top: 80px;">
+<div id="v_adminSelection">
+    <div class="container" style="width: 60%; margin-top: 80px;">
     <center>
     <img src="assets/metrodogs logo.jpg" alt="metrodogs logo" style="width:20%; height: 20%;">
     </center>
@@ -39,7 +39,7 @@
             
         </div>
         
+        </div>
     </div>
 </div>
-
 <?php include("components/footer.php");?>
