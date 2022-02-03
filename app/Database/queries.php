@@ -9,6 +9,8 @@ interface QueryIndicator
     public function checkToken($table, $args);
     public function addNewToken($table, $args);
     public function getTokenization($args);
+    public function scanToken($args);
+    public function getUserById($args);
 }
 interface ServerInterface
 {
@@ -56,6 +58,20 @@ class Queries implements QueryIndicator
     {
         if ($args === "login/get/token") {
             $sql = "select * from tokenization where tokenOwner=:ownerName and tokenOwnerId=:uId";
+            return $sql;
+        }
+    }
+    public function scanToken($args)
+    {
+        if ($args === "scan/token") {
+            $sql = "select * from tokenization where tokenOwner=:owner and istokenvalid=1";
+            return $sql;
+        }
+    }
+    public function getUserById($args)
+    {
+        if ($args === "scan/token/getById") {
+            $sql = "select * from users where userID=:uid";
             return $sql;
         }
     }
