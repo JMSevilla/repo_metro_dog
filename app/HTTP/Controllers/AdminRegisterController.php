@@ -29,6 +29,7 @@ class AdminRegistrationController extends DatabaseMigration implements IAdminReg
                 $this->php_bind(":email", $data['email']);
                 $this->php_bind(":SQ", $data['SQ']);
                 $this->php_bind(":secA", $data['secA']);
+                $this->php_bind(":branch", $data['branch']);
                 if ($this->php_exec()) {
                     echo $this->php_responses(
                         true,

@@ -16,6 +16,7 @@ new Vue({
     }),
     created(){ 
         this.oncheckUser()
+        this.scanningToken();
     },
     methods : {
         oncheckUser : function() {
@@ -28,6 +29,38 @@ new Vue({
                     }
                 })
             })
+        },
+        scanningToken: function(){
+            let key = localStorage.getItem('key_identifier') ? localStorage.getItem('key_identifier') : "unknown"
+            if(!key || key == null) {
+                return false;
+            } else { 
+                const loading = this.$loading({
+                    lock: true,
+                    text: 'Loading',
+                    spinner: 'el-icon-loading',
+                    background: 'rgba(0, 0, 0, 0.7)'
+                  });
+                setTimeout(() => {
+                    constructJS.scanTokenClientRequest(
+                        key
+                    ).then(r => {
+                        ResponseConfiguration.getResponse(r).then(__debounce => {
+                            switch(true){
+                                case __debounce[0].key === "cookie_admin_exist":
+                                    loading.close();
+                                    return window.location.href = "adminSelection"
+                                case __debounce[0].key === "cookie_admin_not_exist":
+                                    loading.close();
+                                    return false
+                                case __debounce[0].key === "cookie_invalid":
+                                    loading.close();
+                                    return false
+                            }
+                        })
+                    })
+                }, 3000)
+            }
         },
         onLogin : function() {
             SystemValidation.validate_user_login(
@@ -61,15 +94,19 @@ new Vue({
                             console.log(r)
                             ResponseConfiguration.getResponse(r).then(__debounce => {
                                 switch(true){
-                                    case __debounce[0].key === "success_admin":
+                                    case __debounce[0].key.message === "success_admin":
                                         this.$notify.success({
                                             title: 'Success',
                                             message: 'Successfully Logged in',
                                             offset: 100
                                           });
+                                          localStorage.setItem("key_identifier", this.taskObject.username)
+                                          let info = []
+                                          info.push({fname:__debounce[0].key.fname,lname:__debounce[0].key.lname,role:__debounce[0].key.role})
+                                          localStorage.setItem("info",JSON.stringify(info))
                                           this.fullscreenLoading = false;
                                           //route -> choose platform -> admin select
-                                          return true;
+                                          return window.location.href = "adminSelection"
                                     case __debounce[0].key === "account_disabled":
                                         this.$notify.warning({
                                             title: 'Warning',

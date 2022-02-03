@@ -26,12 +26,11 @@ new Vue({
     
     return {
        
-
-            active : 3,
+            active : 1,
             adminTask : {
-                firstname : 'test firstname', lastname: 'test lastname', primary_address : 'test', secondary_address: '',
-                contactNumber: '09212142370', email: 'admin@gmail.com', username: 'admin', password: 'admin', conpass: 'admin',
-                sec_question : 'When is your birthday?', sec_answer: 'test',  trigger: 1
+                firstname : '', lastname: '', primary_address : '', secondary_address: '', md_branch:"",
+                contactNumber: '', email: '', username: '', password: '', conpass: '',
+                sec_question : '', sec_answer: '',  trigger: 1
             },
             
             options: [{
@@ -50,6 +49,15 @@ new Vue({
                 value: 'What\'s the name of your dog?',
                 label: 'What\'s the name of your dog?'
               }],
+              
+              optionBranch: [{
+                value: 'Batino',
+                label: 'Batino'
+              }, {
+                value: 'San Pedro',
+                label: 'San Pedro'
+              }],
+              
             rules: {
                 firstname : [
                     {required : true, message: 'Please enter firstname'}
@@ -62,6 +70,9 @@ new Vue({
     
                 ],
                 secondary_address: [
+                    {required: false, }
+                ],
+                md_branch: [
                     {required: false, }
                 ],
                 contactNumber: [

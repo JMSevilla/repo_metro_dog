@@ -139,10 +139,11 @@ class LoginCoreController extends DatabaseMigration implements LoginCoreInterfac
                                     $tokenClassify->checkOAuth($data['uname'], $uId, "admin");
                                     /* Token Getter */
                                     $tokenClassify->getOAuthToken($data['uname'], $uId);
+                                    $logged_array = ["fname" => $fname, "lname" => $lname, "message" => "success_admin", "role" => "administrator"];
                                     echo $this->php_responses(
                                         true,
                                         "single",
-                                        (object)[0 => array("key" => "success_admin")]
+                                        (object)[0 => array("key" => $logged_array)]
                                     );
                                 } else {
                                     //cashier

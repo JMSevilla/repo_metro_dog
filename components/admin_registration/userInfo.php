@@ -28,6 +28,14 @@
         </div>
         <div class="row" style="margin-top: 20px;">
             <div class="col-sm">
+                <el-form-item label="Metro Dog Branch" prop="mdbranch">
+                <el-select style="width: 100%;" v-model="adminTask.mdbranch" filterable placeholder="Select Branch">
+                <el-option v-for="item in optionBranch" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+                 </el-select>
+                 </el-form-item>
+            </div>
+            <div class="col-sm">
                 <el-form-item label="Contact Number" prop="contactNumber">
                     <el-input type="text" clearable placeholder="Enter contact number" v-model="adminTask.contactNumber" maxlength="11" minlength="11"
                      style="width: 100%; margin-bottom: 10px;">
