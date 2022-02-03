@@ -27,29 +27,14 @@ new Vue({
     return {
        
 
-            active : 3,
+            active : 2,
             adminTask : {
-                firstname : 'test firstname', lastname: 'test lastname', primary_address : 'test', secondary_address: '',
-                contactNumber: '09212142370', email: 'admin@gmail.com', username: 'admin', password: 'admin', conpass: 'admin',
-                sec_question : 'When is your birthday?', sec_answer: 'test',  trigger: 1
+                firstname : '', lastname: '', primary_address : '', secondary_address: '',
+                contactNumber: '', email: '', username: '', password: '', conpass: '',
+                sec_question : '', sec_answer: '',  trigger: 1
             },
             
-            options: [{
-                value: 'When is your birthday?',
-                label: 'When is your birthday?'
-              }, {
-                value: 'Where is your birthplace?',
-                label: 'Where is your birthplace?'
-              }, {
-                value: 'What is your favorite food?',
-                label: 'What is your favorite food?'
-              }, {
-                value: 'What is your zodiac sign?',
-                label: 'What is your zodiac sign?'
-              }, {
-                value: 'What\'s the name of your dog?',
-                label: 'What\'s the name of your dog?'
-              }],
+            optionsQuestions: [],
             rules: {
                 firstname : [
                     {required : true, message: 'Please enter firstname'}
@@ -92,7 +77,17 @@ new Vue({
             fullscreenLoading: false
         }
     },
+    created(){
+        this.fetchQuestion();
+    },
     methods: {
+        fetchQuestion: function() {
+            __constructJS.fetchQuestionClientRequest().then(r => {
+                responseConfiguration.getResponse(r).then(__debounce => {
+                    this.optionsQuestions = __debounce[0].key
+                })
+            })
+        },
         onNextInfo: function(ruleForm){
             if(this.adminTask.password!== this.adminTask.conpass)
             {

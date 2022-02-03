@@ -46,6 +46,20 @@ class RequestConfiguration {
         })
         return await promise;
     }
+    fetchQuestion(){
+        return new Promise(resolve => {
+            $.ajax({
+                method: 'post',
+                url : state_initiate.instance.app + state_initiate.instance.HelperConfig.adminRegHelper.Route,
+                data : {
+                    getQuestions: true
+                },
+                success : function(response) {
+                    return resolve(response)
+                }
+            })
+        })
+    }
 }
 
 class RequestVerifier extends RequestConfiguration { 
@@ -70,6 +84,9 @@ class RequestVerifier extends RequestConfiguration {
        }else{
         return this.scanToken(payload)
        }
+    }
+    fetchQuestionClientRequest(){
+        return this.fetchQuestion();
     }
 }
 
