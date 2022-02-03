@@ -30,7 +30,7 @@ class Queries implements QueryIndicator
     public function InsertAdminReg($table, $args)
     {
         if ($args === "adminReg") {
-            $sql = "insert into " . $table . " values(default, :fname, :lname, :uname, :pwd, :uType, :uStatus, :imgURL, current_timestamp, :PA, :SA, :CN, :email, :SQ, :secA)";
+            $sql = "insert into " . $table . " values(default, :fname, :lname, :uname, :pwd, :uType, :uStatus, :imgURL, current_timestamp, :PA, :SA, :CN, :email, :SQ, :secA, :branch)";
             return $sql;
         }
     }

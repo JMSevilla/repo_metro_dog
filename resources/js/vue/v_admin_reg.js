@@ -26,10 +26,9 @@ new Vue({
     
     return {
        
-
-            active : 2,
+            active : 1,
             adminTask : {
-                firstname : '', lastname: '', primary_address : '', secondary_address: '',
+                firstname : '', lastname: '', primary_address : '', secondary_address: '', md_branch:"",
                 contactNumber: '', email: '', username: '', password: '', conpass: '',
                 sec_question : '', sec_answer: '',  trigger: 1
             },
@@ -47,6 +46,9 @@ new Vue({
     
                 ],
                 secondary_address: [
+                    {required: false, }
+                ],
+                md_branch: [
                     {required: false, }
                 ],
                 contactNumber: [

@@ -94,13 +94,16 @@ new Vue({
                             console.log(r)
                             ResponseConfiguration.getResponse(r).then(__debounce => {
                                 switch(true){
-                                    case __debounce[0].key === "success_admin":
+                                    case __debounce[0].key.message === "success_admin":
                                         this.$notify.success({
                                             title: 'Success',
                                             message: 'Successfully Logged in',
                                             offset: 100
                                           });
                                           localStorage.setItem("key_identifier", this.taskObject.username)
+                                          let info = []
+                                          info.push({fname:__debounce[0].key.fname,lname:__debounce[0].key.lname,role:__debounce[0].key.role})
+                                          localStorage.setItem("info",JSON.stringify(info))
                                           this.fullscreenLoading = false;
                                           //route -> choose platform -> admin select
                                           return window.location.href = "adminSelection"

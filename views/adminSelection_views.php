@@ -4,7 +4,7 @@
             <center>
                 <img src="assets/metrodogs logo.jpg" alt="metrodogs logo" style="width:20%; height: 20%;">
             </center>
-            <h2 style="text-align:center; text-transform: uppercase;">~ welcome user , please select system ~</h2>
+            <h2 style="text-align:center; text-transform: uppercase;">~ welcome {{platformObject.fname}} , please select system ~</h2>
             <hr style="margin-bottom:50px;">
 
             <div class="row">
@@ -33,7 +33,10 @@
 
                 <div class="col-4">
                     <el-card style="margin-top:20px;margin-bottom: 20px;" shadow="always">
-                        <h5>Logged in as : </h5>
+                    <center>
+                        <h5>Logged in as : {{platformObject.role}}</h5>
+                        <span>User: {{platformObject.fname + " " + platformObject.lname}}</span>
+                    </center>
                     </el-card>
                     <button class="btn btn-block btn-danger"> Logout</button>
                 </div>
