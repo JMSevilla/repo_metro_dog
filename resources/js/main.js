@@ -27,6 +27,25 @@ class RequestConfiguration {
         })
         return await promise;
     }
+    async scanToken(callback) {
+        const promise = new Promise((resolve, reject) => {
+            $.ajax({
+                url : state_initiate.instance.cookieManagement + state_initiate.instance.CookieConfig.scanToken.Route,
+                method : 'post',
+                data : {
+                    tokenName : callback,
+                    scanCookie : true
+                },
+                success : function(response) {
+                    return resolve(response)
+                },
+                error : function(e) {
+                    return reject(e)
+                }
+            })
+        })
+        return await promise;
+    }
 }
 
 class RequestVerifier extends RequestConfiguration { 
@@ -44,6 +63,13 @@ class RequestVerifier extends RequestConfiguration {
         if(payload.loginTrigger === 1) {
             return this.postLogin(payload)
         }
+    }
+    scanTokenClientRequest(payload){
+       if(!payload){
+        return false;
+       }else{
+        return this.scanToken(payload)
+       }
     }
 }
 
