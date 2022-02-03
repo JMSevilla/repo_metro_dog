@@ -8,6 +8,7 @@ class DatabaseParams
     public static $db = "dbmetrodog";
     public static $stmt;
     public static $helper;
+    public static $tokenSetter;
 }
 
 class DatabaseMigration
@@ -59,10 +60,29 @@ class DatabaseMigration
             case $payload == "single":
                 return json_encode($isArray, JSON_FORCE_OBJECT);
                 break;
+            case $payload == "normal":
+                return json_encode($isArray);
+                break;
         }
     }
     public function php_row_checker()
     {
         return DatabaseParams::$stmt->rowCount() > 0;
+    }
+    public function php_encrypt_password($argsPassword)
+    {
+        return password_hash($argsPassword, PASSWORD_DEFAULT);
+    }
+    public function php_decrypt_password($origpass, $request_pass)
+    {
+        return password_verify($request_pass, $origpass);
+    }
+    public function php_fetchRow()
+    {
+        return DatabaseParams::$stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    public function tokenGen()
+    {
+        return bin2hex(random_bytes(16));
     }
 }

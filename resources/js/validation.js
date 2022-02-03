@@ -6,9 +6,11 @@ class SystemValidation {
                 return resolve("emptyUsername")
             } else if (!p) {
                 return resolve("emptyPassword")
-            } else if(p.length <= 6) {
-                return resolve("passwordExceed")
-            } else { 
+            }
+            //  else if(p.length <= 6) {
+            //     return resolve("passwordExceed")
+            // }
+             else { 
                 return resolve("Good")
             }
         })
