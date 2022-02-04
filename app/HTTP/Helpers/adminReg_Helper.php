@@ -16,6 +16,7 @@ if (isset($_POST['trigger']) == 1) {
     ];
     $callback = new AdminRegistration();
     $callback->IAdminReg($data);
+    
 }
 
 
@@ -23,3 +24,9 @@ if (isset($_POST['getQuestions']) == true) {
     $callback = new AdminRegistration();
     $callback->IFetchQuestions();
 }
+
+if (isset($_POST['getBranch']) == true) {
+    $callback = new AdminRegistration();
+    $callback->IFetchBranchController();
+}
+

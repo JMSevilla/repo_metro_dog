@@ -30,7 +30,7 @@
             <div class="col-sm">
                 <el-form-item label="Metro Dog Branch" prop="mdbranch">
                 <el-select style="width: 100%;" v-model="adminTask.mdbranch" filterable placeholder="Select Branch">
-                <el-option v-for="item in optionBranch" :key="item.value" :label="item.label" :value="item.value">
+                <el-option v-for="item in optionsBranch" :key="item.branch" :label="item.branch" :value="item.branch">
                 </el-option>
                  </el-select>
                  </el-form-item>

@@ -7,6 +7,7 @@ interface IAdminRegController
 {
     public function IadminController($data);
     public function IFetchController();
+    public function IFetchBranchController();
 }
 
 class AdminRegistrationController extends DatabaseMigration implements IAdminRegController
@@ -50,6 +51,24 @@ class AdminRegistrationController extends DatabaseMigration implements IAdminReg
                 $this->php_exec();
                 if ($this->php_row_checker()) {
                     $row = $this->php_fetchAll();
+                    echo $this->php_responses(
+                        true,
+                        "single",
+                        (object)[0 => array("key" => $row)]
+                    );
+                }
+            }
+        }
+    }
+    public function IFetchBranchController()
+    {
+        $serverHelper = new Server();
+        $queryIndicator = new Queries();
+        if ($serverHelper->POSTCHECKER()) {
+            if ($this->php_query($queryIndicator->fetchAllBranch("fetch/branchName"))) {
+                $this->php_exec();
+                if ($this->php_row_checker()) {
+                    $row = $this->php_fetchAllBranch();
                     echo $this->php_responses(
                         true,
                         "single",
