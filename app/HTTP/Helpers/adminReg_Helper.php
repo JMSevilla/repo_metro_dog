@@ -12,7 +12,7 @@ if (isset($_POST['trigger']) == 1) {
         "email" => $_POST['email'],
         "username" => $_POST['username'], "pwd" => $_POST['password'],
         "SQ" => $_POST['sec_question'], "secA" => $_POST['sec_answer'],
-        "branch" => $_POST['md_branch']
+        "branch" => $_POST['branchName']
     ];
     $callback = new AdminRegistration();
     $callback->IAdminReg($data);

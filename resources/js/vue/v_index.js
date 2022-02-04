@@ -62,6 +62,9 @@ new Vue({
                 }, 3000)
             }
         },
+        checkEnter: function(){
+            this.onLogin();
+        },
         onLogin : function() {
             SystemValidation.validate_user_login(
                 this.taskObject.username, this.taskObject.password

@@ -86,8 +86,8 @@ class Queries implements QueryIndicator
     }
     public function fetchAllBranch($args)
     {
-        if ($args === "fetch/branch") {
-            $sql = "select distinct branchName from branch where branchStatus=:Active";
+        if ($args === "fetch/branchName") {
+            $sql = "select distinct branchName from branch where branchStatus=1";
             return $sql;
         }
     }

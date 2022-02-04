@@ -38,7 +38,7 @@
                         <span>User: {{platformObject.fname + " " + platformObject.lname}}</span>
                     </center>
                     </el-card>
-                    <button class="btn btn-block btn-danger"> Logout</button>
+                    <button class="btn btn-block btn-danger" @click="onLogout"> Logout</button>
                 </div>
 
                 <div class="col-4">

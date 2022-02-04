@@ -28,7 +28,7 @@ new Vue({
        
             active : 1,
             adminTask : {
-                firstname : '', lastname: '', primary_address : '', secondary_address: '', mdbranch:"",
+                firstname : '', lastname: '', primary_address : '', secondary_address: '', mdbranch: '',
                 contactNumber: '', email: '', username: '', password: '', conpass: '',
                 sec_question : '', sec_answer: '',  trigger: 1
             },

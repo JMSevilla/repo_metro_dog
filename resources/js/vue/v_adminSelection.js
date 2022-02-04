@@ -14,7 +14,27 @@ new Vue({
     },
     created(){
         console.log(this.platformObject)
-    }
+    },
+
+    methods: {
+        onLogout() {
+          this.$confirm('Are you sure you want to Log Out?', 'Warning', {
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancel',
+            type: 'warning'
+          }).then(() => {
+            this.$message({
+              type: 'success',
+              message: 'Cookies Destroyed',
+              
+            });
+          }).catch(() => {
+            ({
+              
+            });          
+          });
+        }
+      }
 })
 
 
