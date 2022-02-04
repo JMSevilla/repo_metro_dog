@@ -87,7 +87,7 @@ class DatabaseMigration
     }
     public function php_fetchAllBranch()
     {
-        return DatabaseParams::$stmt->fetchAll(PDO::FETCH_ASSOC);
+        return DatabaseParams::$stmt->fetchAllBranch(PDO::FETCH_ASSOC);
     }
     public function tokenGen()
     {

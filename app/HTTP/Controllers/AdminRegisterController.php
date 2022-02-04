@@ -68,7 +68,7 @@ class AdminRegistrationController extends DatabaseMigration implements IAdminReg
             if ($this->php_query($queryIndicator->fetchAllBranch("fetch/branchName"))) {
                 $this->php_exec();
                 if ($this->php_row_checker()) {
-                    $row = $this->php_fetchAllBranch();
+                    $row = $this->php_fetchAll();
                     echo $this->php_responses(
                         true,
                         "single",
