@@ -85,6 +85,10 @@ class DatabaseMigration
     {
         return DatabaseParams::$stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function php_fetchAllBranch()
+    {
+        return DatabaseParams::$stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     public function tokenGen()
     {
         return bin2hex(random_bytes(16));

@@ -28,12 +28,13 @@ new Vue({
        
             active : 1,
             adminTask : {
-                firstname : '', lastname: '', primary_address : '', secondary_address: '', md_branch:"",
+                firstname : '', lastname: '', primary_address : '', secondary_address: '', mdbranch:"",
                 contactNumber: '', email: '', username: '', password: '', conpass: '',
                 sec_question : '', sec_answer: '',  trigger: 1
             },
             
             optionsQuestions: [],
+            optionsBranch: [],
             rules: {
                 firstname : [
                     {required : true, message: 'Please enter firstname'}
@@ -48,7 +49,7 @@ new Vue({
                 secondary_address: [
                     {required: false, }
                 ],
-                md_branch: [
+                mdbranch: [
                     {required: false, }
                 ],
                 contactNumber: [
@@ -81,6 +82,7 @@ new Vue({
     },
     created(){
         this.fetchQuestion();
+        this.fetchBranch();
     },
     methods: {
         fetchQuestion: function() {
@@ -90,6 +92,15 @@ new Vue({
                 })
             })
         },
+
+        fetchBranch: function() {
+            __constructJS.fetchBranchClientRequest().then(r => {
+                responseConfiguration.getResponse(r).then(__debounce => {
+                    this.optionsBranch = __debounce[0].key
+                })
+            })
+        },
+
         onNextInfo: function(ruleForm){
             if(this.adminTask.password!== this.adminTask.conpass)
             {

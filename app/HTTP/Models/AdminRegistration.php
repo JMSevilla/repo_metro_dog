@@ -6,6 +6,7 @@ interface adminRegistrationInterface
 {
     public function IAdminReg($data);
     public function IFetchQuestions();
+    public function IFetchBranches();
 }
 
 class AdminRegistration extends AdminRegistrationController implements adminRegistrationInterface
@@ -17,5 +18,9 @@ class AdminRegistration extends AdminRegistrationController implements adminRegi
     public function IFetchQuestions()
     {
         $this->IFetchController();
+    }
+    public function IFetchBranches()
+    {
+        $this->IFetchBranchController();
     }
 }

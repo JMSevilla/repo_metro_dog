@@ -12,6 +12,7 @@ interface QueryIndicator
     public function scanToken($args);
     public function getUserById($args);
     public function fetchAllQuestions($args);
+    public function fetchAllBranch($args);
 }
 interface ServerInterface
 {
@@ -80,6 +81,13 @@ class Queries implements QueryIndicator
     {
         if ($args === "fetch/questions") {
             $sql = "select distinct question from mdQuestions where questionStatus=1";
+            return $sql;
+        }
+    }
+    public function fetchAllBranch($args)
+    {
+        if ($args === "fetch/branch") {
+            $sql = "select distinct branchName from branch where branchStatus=:Active";
             return $sql;
         }
     }

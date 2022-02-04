@@ -60,6 +60,22 @@ class RequestConfiguration {
             })
         })
     }
+
+    fetchBranch(){
+        return new Promise(resolve => {
+            $.ajax({
+                method: 'post',
+                url : state_initiate.instance.app + state_initiate.instance.HelperConfig.adminRegHelper.Route,
+                data : {
+                    getBranch: true
+                },
+                success : function(response) {
+                    return resolve(response)
+                }
+            })
+        })
+    }
+
 }
 
 class RequestVerifier extends RequestConfiguration { 
@@ -87,6 +103,9 @@ class RequestVerifier extends RequestConfiguration {
     }
     fetchQuestionClientRequest(){
         return this.fetchQuestion();
+    }
+    fetchBranchClientRequest(){
+        return this.fetchBranch();
     }
 }
 
