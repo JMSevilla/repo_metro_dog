@@ -1,35 +1,43 @@
-<div class="container">
-    <div class="row">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="text-center">
-                          <h3><i class="fa fa-lock fa-4x"></i></h3>
-                          <h2 class="text-center">Forgot Password?</h2>
-                          <p>You can reset your password here.</p>
-                            <div class="panel-body">
-                              
-                              <form class="form">
-                                <fieldset>
-                                  <div class="form-group">
-                                    <div class="input-group">
-                                      <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                      
-                                      <input id="emailInput" placeholder="email address" class="form-control" type="email" oninvalid="setCustomValidity('Please enter a valid email address!')" onchange="try{setCustomValidity('')}catch(e){}" required="">
-                                    </div>
-                                  </div>
-                                  <div class="form-group">
-                                    <input class="btn btn-lg btn-primary btn-block" value="Send My Password" type="submit">
-                                  </div>
-                                </fieldset>
-                              </form>
-                              
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
         </div>
+                            <div class="modal-body">
+
+                                  <div class="text-center">
+                                      <h3><i class="fa fa-lock fa-2x"></i></h3>
+                                      <h2 class="text-center">Forgot Password?</h2>
+                                      <p>You can reset your password here.</p>
+                                        <div class="panel-body" style="text-align: left;">
+                                          <i class="fas fa-user"></i><label for="username">&nbspUsername</label>
+                                            <el-input type="text" v-model="taskObject.username" style="margin-top: 10px; margin-bottom: 10px;" disabled=true;></el-input>
+
+                                            <i class="fas fa-question"></i><label for="username">&nbspSecurity Question</label>
+                                            <el-input type="text" v-model="taskObject.sec_question" style="margin-top: 10px; margin-bottom: 10px;" disabled=true;></el-input>
+
+                                            <i class="fas fa-poll-h"></i><label for="username">&nbspAnswer</label>
+                                            <el-input type="text" placeholder="Enter Security Answer" v-model="taskObject.sec_answer" style="margin-top: 10px; margin-bottom: 10px;"></el-input>
+
+                                          <div class="row">
+                                          <div class="col">
+                                          <i class="fas fa-key"></i><label for="username">&nbspNew Password</label>
+                                          <el-input type="text" placeholder="Enter New Password" clearable show-password v-model="taskObject.newPass" style="margin-top: 10px; margin-bottom: 10px;" required=true;></el-input>
+                                          </div>
+                                          <div class="col">
+                                          <i class="fas fa-check-double"></i><label for="username">&nbspConfirm Password</label>
+                                          <el-input type="text" placeholder="Confirm Password" clearable show-password v-model="taskObject.conPass" style="margin-top: 10px; margin-bottom: 10px;" required=true;></el-input>
+                                          </div>
+                                            </div>
+                                      </div>
+
+                                    </div>
+                        </div>
+       <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-success">Save Changes</button>
+      </div>
     </div>
+  </div>
 </div>
