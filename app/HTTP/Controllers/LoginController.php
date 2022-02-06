@@ -82,26 +82,26 @@ class Tokenization extends DatabaseMigration implements ITokenization
         }
     }
     public function checkTokenIfExist($tokenOwner, $tokenOwnerId, $savedPlatform){
-        $serverHelper = new Server();
-        $queryIndicator = new Queries();
-        $tokenSetter = new OAuthtoken();
-        if($serverChecker->POSTCHECKER()){
-            if($this->php_prepare($queryIndicator->checkIsTokenValid("check/istokenvalid"))){
-                $this->php_bind(":owner", $tokenOwner);
-                $this->php_bind(":id", $tokenOwnerId);
-                if($this->php_exec()){
-                    $get = $this->php_row_checker();
-                    $isvalid = $get['istokenvalid'];
-                    if($isvalid === '1'){
-                        //update existing token
+        // $serverHelper = new Server();
+        // $queryIndicator = new Queries();
+        // $tokenSetter = new OAuthtoken();
+        // if($serverChecker->POSTCHECKER()){
+        //     if($this->php_prepare($queryIndicator->checkIsTokenValid("check/istokenvalid"))){
+        //         $this->php_bind(":owner", $tokenOwner);
+        //         $this->php_bind(":id", $tokenOwnerId);
+        //         if($this->php_exec()){
+        //             $get = $this->php_row_checker();
+        //             $isvalid = $get['istokenvalid'];
+        //             if($isvalid === '1'){
+        //                 //update existing token
                         
-                    }else{ 
-                        // insert another token
-                        $this->checkOAuth($tokenOwner, $tokenOwnerId, $savedPlatform);
-                    }
-                }
-            }
-        }
+        //             }else{ 
+        //                 // insert another token
+        //                 $this->checkOAuth($tokenOwner, $tokenOwnerId, $savedPlatform);
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
 

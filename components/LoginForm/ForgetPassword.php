@@ -36,7 +36,7 @@
                         </div>
        <div class="modal-footer">
         <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-success">Save Changes</button>
+        <button type="button" class="btn btn-success" v-on:click="changePass()">Save Changes</button>
       </div>
     </div>
   </div>

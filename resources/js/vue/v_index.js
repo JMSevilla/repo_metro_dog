@@ -2,11 +2,12 @@ ELEMENT.locale(ELEMENT.lang.en)
 import constructJS from "../main.js"
 import SystemValidation from "../validation.js"
 import ResponseConfiguration from "../Response.js"
+
 new Vue({
     el : '#v_loginpage',
     data: () => ({
         taskObject: {
-            username: '', password: '', loginTrigger : 1
+            username: '', password: '', newPass: '', conPass: '', loginTrigger : 1
         },
         checkObject : {
             trigger : 1
@@ -143,6 +144,24 @@ new Vue({
                     }, 3000)
                 }
             })
+        },
+        // Forget password function for new password/confirm password //
+        changePass: function(){
+            if(this.taskObject.newPass!== this.taskObject.conPass)
+            {
+                this.$notify.error({
+                    title: 'Error',
+                    message: 'Password doesn\'t match', 
+                    offset: 100
+                  });
+            }
+            else{
+                // change user password 
+                this.$alert("Password Changed!. Proceed to Login?").then(() => {
+                    return window.location.href = "index"
+                  });
+                 
+            }
         }
     }
 })

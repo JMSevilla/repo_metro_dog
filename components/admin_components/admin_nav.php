@@ -1,8 +1,8 @@
 <div id="admin_dash_nav">
     <div class="app-header header-shadow">
         <div class="app-header__logo">
-            <img src="resources/assets/large_modernresolve.png" style="width: 50%; height: auto;" class="img-fluid" alt="">
-            <el-tag type="success" size="small">BETA v1.0</el-tag>
+            <img src="assets/metrodogs logo.jpg" style="width: 25%; height: auto;" class="img-fluid" alt="metro dog logo">
+            <!-- <el-tag type="success" size="small">BETA v1.0</el-tag> -->
             <div class="header__pane ml-auto">
                 <div>
                     <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
@@ -83,8 +83,8 @@
                                 </div>
                             </div>
                             <div class="widget-content-right header-user-info ml-3">
-                                <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
-                                    <i class="fa text-white fa-calendar pr-1 pl-1"></i>
+                                <button title="Sign Out" type="button" class="btn-shadow p-1 btn btn-primary btn-sm">
+                                <i class="fas fa-sign-out-alt"></i>
                                 </button>
                             </div>
                         </div>
