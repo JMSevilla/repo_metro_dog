@@ -13,6 +13,7 @@ interface QueryIndicator
     public function getUserById($args);
     public function fetchAllQuestions($args);
     public function fetchAllBranch($args);
+    public function checkIsTokenValid($args);
 }
 interface ServerInterface
 {
@@ -88,6 +89,12 @@ class Queries implements QueryIndicator
     {
         if ($args === "fetch/branchName") {
             $sql = "select distinct branchName from branch where branchStatus=1";
+            return $sql;
+        }
+    }
+    public function checkIsTokenValid($args){
+        if($args === "check/istokenvalid"){
+            $sql = "select istokenvalid from tokenization where tokenOwner=:owner and tokenOwnerId=:id";
             return $sql;
         }
     }

@@ -33,6 +33,7 @@ interface ITokenization
 {
     public function checkOAuth($tokenOwner, $tokenOwnerId, $savedPlatform);
     public function getOAuthToken($tokenOwner, $tokenOwnerId);
+    public function checkTokenIfExist($tokenOwner, $tokenOwnerId, $savedPlatform);
 }
 
 class Tokenization extends DatabaseMigration implements ITokenization
@@ -75,6 +76,28 @@ class Tokenization extends DatabaseMigration implements ITokenization
                             'adminToken'
                         );
                         return true;
+                    }
+                }
+            }
+        }
+    }
+    public function checkTokenIfExist($tokenOwner, $tokenOwnerId, $savedPlatform){
+        $serverHelper = new Server();
+        $queryIndicator = new Queries();
+        $tokenSetter = new OAuthtoken();
+        if($serverChecker->POSTCHECKER()){
+            if($this->php_prepare($queryIndicator->checkIsTokenValid("check/istokenvalid"))){
+                $this->php_bind(":owner", $tokenOwner);
+                $this->php_bind(":id", $tokenOwnerId);
+                if($this->php_exec()){
+                    $get = $this->php_row_checker();
+                    $isvalid = $get['istokenvalid'];
+                    if($isvalid === '1'){
+                        //update existing token
+                        
+                    }else{ 
+                        // insert another token
+                        $this->checkOAuth($tokenOwner, $tokenOwnerId, $savedPlatform);
                     }
                 }
             }
@@ -136,7 +159,7 @@ class LoginCoreController extends DatabaseMigration implements LoginCoreInterfac
                                     //admin
                                     /* Token Setter */
                                     $tokenClassify = new Tokenization();
-                                    $tokenClassify->checkOAuth($data['uname'], $uId, "admin");
+                                    $tokenClassify->checkTokenIfExist($data['uname'], $uId, "admin");
                                     /* Token Getter */
                                     $tokenClassify->getOAuthToken($data['uname'], $uId);
                                     $logged_array = ["fname" => $fname, "lname" => $lname, "message" => "success_admin", "role" => "administrator"];
