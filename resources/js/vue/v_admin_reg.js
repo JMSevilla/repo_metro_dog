@@ -24,11 +24,11 @@ new Vue({
             }, 100)
           }
     
-    return {
+     return {
        
             active : 3,
             adminTask : {
-                firstname : 'admin fname', lastname: 'admin lname', primary_address : 'test', secondary_address: '', mdbranch: 'batino',
+                firstname : 'admin fname', lastname: 'admin lname',     primary_address : 'test', secondary_address: '', mdbranch: 'batino',
                 contactNumber: '123', email: 'admin@gmail.com', username: 'admin', password: 'admin', conpass: '',
                 sec_question : 'test', sec_answer: 'test',  trigger: 1
             },
