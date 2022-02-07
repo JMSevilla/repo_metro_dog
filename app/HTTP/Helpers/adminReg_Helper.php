@@ -12,11 +12,10 @@ if (isset($_POST['trigger']) == 1) {
         "email" => $_POST['email'],
         "username" => $_POST['username'], "pwd" => $_POST['password'],
         "SQ" => $_POST['sec_question'], "secA" => $_POST['sec_answer'],
-        "branch" => $_POST['branchName']
+        "branch" => $_POST['mdbranch']
     ];
     $callback = new AdminRegistration();
     $callback->IAdminReg($data);
-    
 }
 
 
@@ -29,4 +28,3 @@ if (isset($_POST['getBranch']) == true) {
     $callback = new AdminRegistration();
     $callback->IFetchBranchController();
 }
-

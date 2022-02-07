@@ -26,11 +26,11 @@ new Vue({
     
     return {
        
-            active : 2,
+            active : 3,
             adminTask : {
-                firstname : '', lastname: '', primary_address : '', secondary_address: '', mdbranch: '',
-                contactNumber: '', email: '', username: '', password: '', conpass: '',
-                sec_question : '', sec_answer: '',  trigger: 1
+                firstname : 'admin fname', lastname: 'admin lname', primary_address : 'test', secondary_address: '', mdbranch: 'batino',
+                contactNumber: '123', email: 'admin@gmail.com', username: 'admin', password: 'admin', conpass: '',
+                sec_question : 'test', sec_answer: 'test',  trigger: 1
             },
             
             optionsQuestions: [],
@@ -130,6 +130,7 @@ new Vue({
                 this.fullscreenLoading = true
                 setTimeout(() => {
                     __constructJS.postAdmin_ClientRequest(this.adminTask).then((r) => {
+                        console.log(r)
                         responseConfiguration.getResponse(r).then(__debounce => {
                             switch(true) {
                                 case __debounce[0].key === "success_registration":

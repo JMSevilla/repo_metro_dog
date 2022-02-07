@@ -53,31 +53,23 @@ new Vue({
           if(!key || key == null) {
               return false;
           }
-          const loading = this.$loading({
-            lock: true,
-            text: 'Loading',
-            spinner: 'el-icon-loading',
-            background: 'rgba(0, 0, 0, 0.7)'
-          });
-          setTimeout(() => {
-            constructJS.scanTokenClientRequest(
-              key
-          ).then(r => {
-              ResponseConfiguration.getResponse(r).then(__debounce => {
-                  switch(true){
-                      case __debounce[0].key === "cookie_admin_exist":
-                          loading.close();
-                          return true
-                      case __debounce[0].key === "cookie_admin_not_exist":
-                          loading.close();
-                          return window.location.href = "index"
-                      case __debounce[0].key === "cookie_invalid":
-                          loading.close();
-                          return window.location.href = "index"
-                  }
-              })
-          })
-          }, 3000)
+          constructJS.scanTokenClientRequest(
+            key
+        ).then(r => {
+            ResponseConfiguration.getResponse(r).then(__debounce => {
+                switch(true){
+                    case __debounce[0].key === "cookie_admin_exist":
+                        loading.close();
+                        return true
+                    case __debounce[0].key === "cookie_admin_not_exist":
+                        loading.close();
+                        return window.location.href = "index"
+                    case __debounce[0].key === "cookie_invalid":
+                        loading.close();
+                        return window.location.href = "index"
+                }
+            })
+        })
         }
       }
 })

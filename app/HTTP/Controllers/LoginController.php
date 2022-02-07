@@ -34,6 +34,7 @@ interface ITokenization
     public function checkOAuth($tokenOwner, $tokenOwnerId, $savedPlatform);
     public function getOAuthToken($tokenOwner, $tokenOwnerId);
     public function checkTokenIfExist($tokenOwner, $tokenOwnerId, $savedPlatform);
+    public function updateExistToken($tokenOwnerId);
 }
 
 class Tokenization extends DatabaseMigration implements ITokenization
@@ -81,24 +82,35 @@ class Tokenization extends DatabaseMigration implements ITokenization
             }
         }
     }
-    public function checkTokenIfExist($tokenOwner, $tokenOwnerId, $savedPlatform){
+    public function checkTokenIfExist($tokenOwner, $tokenOwnerId, $savedPlatform)
+    {
+        $serverHelper = new Server();
+        $queryIndicator = new Queries();
+        if ($serverHelper->POSTCHECKER()) {
+            if ($this->php_prepare($queryIndicator->checkIsTokenValid("check/istokenvalid"))) {
+                $this->php_bind(":owner", $tokenOwner);
+                $this->php_bind(":id", $tokenOwnerId);
+                if ($this->php_exec()) {
+                    if ($this->php_row_checker()) {
+                        $this->updateExistToken($tokenOwnerId);
+                    } else {
+                        $this->checkOAuth($tokenOwner, $tokenOwnerId, $savedPlatform);
+                    }
+                }
+            }
+        }
+    }
+    public function updateExistToken($tokenOwnerId)
+    {
         $serverHelper = new Server();
         $queryIndicator = new Queries();
         $tokenSetter = new OAuthtoken();
-        if($serverChecker->POSTCHECKER()){
-            if($this->php_prepare($queryIndicator->checkIsTokenValid("check/istokenvalid"))){
-                $this->php_bind(":owner", $tokenOwner);
+        if ($serverHelper->POSTCHECKER()) {
+            if ($this->php_prepare($queryIndicator->updateToken("update/token"))) {
+                $this->php_bind(":token", $tokenSetter->setState("Basic:"));
                 $this->php_bind(":id", $tokenOwnerId);
-                if($this->php_exec()){
-                    $get = $this->php_row_checker();
-                    $isvalid = $get['istokenvalid'];
-                    if($isvalid === '1'){
-                        //update existing token
-                        
-                    }else{ 
-                        // insert another token
-                        $this->checkOAuth($tokenOwner, $tokenOwnerId, $savedPlatform);
-                    }
+                if ($this->php_exec()) {
+                    return true;
                 }
             }
         }
@@ -160,6 +172,7 @@ class LoginCoreController extends DatabaseMigration implements LoginCoreInterfac
                                     /* Token Setter */
                                     $tokenClassify = new Tokenization();
                                     $tokenClassify->checkTokenIfExist($data['uname'], $uId, "admin");
+                                    // $tokenClassify->checkOAuth($data['uname'], $uId, "admin");
                                     /* Token Getter */
                                     $tokenClassify->getOAuthToken($data['uname'], $uId);
                                     $logged_array = ["fname" => $fname, "lname" => $lname, "message" => "success_admin", "role" => "administrator"];

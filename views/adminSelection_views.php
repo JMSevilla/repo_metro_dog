@@ -9,7 +9,7 @@
 
             <div class="row">
                 <div class="col-6">
-                    <a href="#" class="btn btn-fix">
+                    <a href="admin" class="btn btn-fix">
                         <img class="card-img-top" style="width:78%;" src="assets/adminselect.webp" alt="Administrator Image">
                         <div class="card-block ">
                             <p class="card-text "><small class="text-muted">click to proceed to admin dashboard</small></p>
@@ -33,10 +33,10 @@
 
                 <div class="col-4">
                     <el-card style="margin-top:20px;margin-bottom: 20px;" shadow="always">
-                    <center>
-                        <h5>Logged in as : {{platformObject.role}}</h5>
-                        <span>User: {{platformObject.fname + " " + platformObject.lname}}</span>
-                    </center>
+                        <center>
+                            <h5>Logged in as : {{platformObject.role}}</h5>
+                            <span>User: {{platformObject.fname + " " + platformObject.lname}}</span>
+                        </center>
                     </el-card>
                     <button class="btn btn-block btn-danger" @click="onLogout"> Logout</button>
                 </div>
