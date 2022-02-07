@@ -41,7 +41,7 @@
                         </a>
                     </li>
 
-                    <li class="app-sidebar__heading">User Management</li>
+                    <li class="app-sidebar__heading">User Access Management</li>
                     <li>
                         <a href="usermanagement" class="mm-active">
                             <i class="metismenu-icon pe-7s-user">

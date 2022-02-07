@@ -1,16 +1,18 @@
 <div id="v_usermanagement">
-   
-        
-    <h3>User Management</h3>
-    <hr>
+    <div class="container">
+        <?php
+        include("components/admin_components/admin_title.php");
+        ?>
 
-    <template>
+
+    </div>
+   <el-card shadow="always">
   <el-table
     :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
     style="width: 100%">
-    <el-table-column label="Date" prop="date">
+    <el-table-column label="ID" prop="id">
     </el-table-column>
-    <el-table-column label="Name" prop="name">
+    <el-table-column label="FirstName" prop="name">
     </el-table-column>
     <el-table-column align="right">
       <template slot="header" slot-scope="scope">
@@ -22,6 +24,5 @@
       </template>
     </el-table-column>
   </el-table>
-</template>
-
+</el-card>
 </div>
