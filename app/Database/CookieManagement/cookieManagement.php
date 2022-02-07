@@ -49,8 +49,13 @@ class CookieManagement implements ICookie
     }
     public function tokenUnset($token_name)
     {
-        unset($_COOKIE[$token_name]);
-        return setcookie($token_name, null, -1, '/');
+        if (isset($_COOKIE[$token_name])) {
+            unset($_COOKIE[$token_name]);
+            setcookie($token_name, null, -1, '/');
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

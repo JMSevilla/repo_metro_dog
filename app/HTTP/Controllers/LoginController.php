@@ -252,7 +252,7 @@ class LoginCoreController extends DatabaseMigration implements LoginCoreInterfac
                 $this->php_bind(":owner", $data['tokenName']);
                 if ($this->php_exec()) {
                     $cookieReactor = new CookieManagement();
-                    $cookieReactor->tokenUnset($_COOKIE['adminToken']);
+                    $cookieReactor->tokenUnset('adminToken');
                     echo $this->php_responses(
                         true,
                         "single",
