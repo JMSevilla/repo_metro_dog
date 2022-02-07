@@ -28,6 +28,7 @@ interface LoginCoreInterface
 {
     public function ClientLogin($data);
     public function updateOnChangeToAdmin($data);
+    public function updateOnLogoutCore($data);
 }
 
 interface ITokenization
@@ -93,7 +94,12 @@ class Tokenization extends DatabaseMigration implements ITokenization
                 $this->php_bind(":id", $tokenOwnerId);
                 if ($this->php_exec()) {
                     if ($this->php_row_checker()) {
-                        $this->updateExistToken($tokenOwnerId);
+                        $get = $this->php_fetchRow();
+                        if ($get['istokenvalid'] === '1') {
+                            $this->updateExistToken($tokenOwnerId);
+                        } else {
+                            $this->checkOAuth($tokenOwner, $tokenOwnerId, $savedPlatform);
+                        }
                     } else {
                         $this->checkOAuth($tokenOwner, $tokenOwnerId, $savedPlatform);
                     }
@@ -233,6 +239,25 @@ class LoginCoreController extends DatabaseMigration implements LoginCoreInterfac
                         $this->php_exec();
                     }
                 } else {
+                }
+            }
+        }
+    }
+    public function updateOnLogoutCore($data)
+    {
+        $serverHelper = new Server();
+        $queryIndicator = new Queries();
+        if ($serverHelper->POSTCHECKER()) {
+            if ($this->php_prepare($queryIndicator->updateOnLogout("logout"))) {
+                $this->php_bind(":owner", $data['tokenName']);
+                if ($this->php_exec()) {
+                    $cookieReactor = new CookieManagement();
+                    $cookieReactor->tokenUnset($_COOKIE['adminToken']);
+                    echo $this->php_responses(
+                        true,
+                        "single",
+                        (object)[0 => array("key" => "admin_logout")]
+                    );
                 }
             }
         }

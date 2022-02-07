@@ -91,6 +91,22 @@ class RequestConfiguration {
         })
         return promise;
     }
+    adminSelectionLogout(){
+        const promise = new Promise((resolve) => {
+            $.ajax({
+                method : 'post',
+                url : state_initiate.instance.app + state_initiate.instance.HelperConfig.checkUserHelper.Route,
+                data : {
+                    update_on_logout_admin : true,
+                    tokenName : localStorage.getItem('key_identifier')
+                },
+                success : function(response){
+                    return resolve(response)
+                }
+            })
+        })
+        return promise;
+    }
 }
 
 class RequestVerifier extends RequestConfiguration { 
@@ -124,6 +140,9 @@ class RequestVerifier extends RequestConfiguration {
     }
     updateOnAdminSelectionClientRequest(){
         return this.updateOnAdminPlatformSelect()
+    }
+    updateOnAdminSelectionLogoutClientRequest(){
+        return this.adminSelectionLogout()
     }
 }
 

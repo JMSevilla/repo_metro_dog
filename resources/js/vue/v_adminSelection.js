@@ -11,7 +11,8 @@ new Vue({
                     role: '',
                     fname: '',
                     lname: '',
-                }
+                },
+                fullscreenLoadingOnLogout: false
         }
     },
     created(){
@@ -37,16 +38,19 @@ new Vue({
             cancelButtonText: 'Cancel',
             type: 'warning'
           }).then(() => {
-            this.$message({
-              type: 'success',
-              message: 'Cookies Destroyed',
-              
-            });
-          }).catch(() => {
-            ({
-              
-            });          
-          });
+            this.fullscreenLoadingOnLogout = true
+            setTimeout(() => {
+              constructJS.updateOnAdminSelectionLogoutClientRequest().then(r => {
+                ResponseConfiguration.getResponse(r).then(__debounce => {
+                  switch(true){
+                    case __debounce[0].key === "admin_logout":
+                        this.fullscreenLoadingOnLogout = false;
+                        return window.location.href = "index";
+                  }
+                })
+              })
+            }, 1000)
+          })
         },
         adminScanning: function() {
           let key = localStorage.getItem('key_identifier') ? localStorage.getItem('key_identifier') : "unknown"
@@ -61,10 +65,8 @@ new Vue({
                     case __debounce[0].key === "cookie_admin_exist_platform_admin":
                       return window.location.href = "admin"
                     case __debounce[0].key === "cookie_admin_not_exist":
-                        loading.close();
                         return window.location.href = "index"
                     case __debounce[0].key === "cookie_invalid":
-                        loading.close();
                         return window.location.href = "index"
                 }
             })
