@@ -116,6 +116,7 @@ new Vue({
                                             message: 'This account was disabled, please contact the admin',
                                             offset: 100
                                           });
+                                          this.taskObject.password = "";
                                           this.fullscreenLoading = false;
                                           return false
                                     case __debounce[0].key === "invalid_password":
@@ -124,6 +125,7 @@ new Vue({
                                             message: 'Invalid Password',
                                             offset: 100
                                           });
+                                          this.taskObject.password = "";
                                           this.fullscreenLoading = false;
                                           return false
                                     case __debounce[0].key === "account_not_found":
@@ -132,6 +134,7 @@ new Vue({
                                             message: 'This account was not found',
                                             offset: 100
                                           });
+                                          this.taskObject.password = "";
                                           this.fullscreenLoading = false;
                                           return false
                                 }

@@ -35,14 +35,19 @@ if ($indentifier == 1) {
 ?>
     <script src="resources/js/vue/v_index.js" type="module"></script>
 <?php
-} else {
+} else if($indentifier == 2) {
 
 ?>
-    <script src="resources/js/vue/v_admin_reg.js" type="module"></script>
+<script src="resources/js/vue/v_adminSelection.js" type="module"></script>
+  
 <?php
+} else {
+    ?>
+      <script src="resources/js/vue/v_admin_reg.js" type="module"></script>
+<?php 
 }
 ?>
-<script src="resources/js/vue/v_adminSelection.js" type="module"></script>
+
 </body>
 
 </html>
