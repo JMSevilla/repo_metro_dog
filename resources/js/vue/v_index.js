@@ -40,11 +40,13 @@ new Vue({
                 ).then(r => {
                     ResponseConfiguration.getResponse(r).then(__debounce => {
                         switch(true){
-                            case __debounce[0].key === "cookie_admin_exist":
+                            case __debounce[0].key === "cookie_admin_exist_platform_admin":
+                                return window.location.href = "admin"
+                            case __debounce[0].key === "cookie_admin_exist_platform_admin_selection":
                                 return window.location.href = "adminSelection"
-                            case __debounce[0].key === "cookie_admin_not_exist":
-                                return false
                             case __debounce[0].key === "cookie_invalid":
+                                return false
+                            case __debounce[0].key === "cookie_admin_not_exist":
                                 return false
                         }
                     })

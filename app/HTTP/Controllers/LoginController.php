@@ -27,6 +27,7 @@ interface LoginControllerInterface
 interface LoginCoreInterface
 {
     public function ClientLogin($data);
+    public function updateOnChangeToAdmin($data);
 }
 
 interface ITokenization
@@ -171,7 +172,7 @@ class LoginCoreController extends DatabaseMigration implements LoginCoreInterfac
                                     //admin
                                     /* Token Setter */
                                     $tokenClassify = new Tokenization();
-                                    $tokenClassify->checkTokenIfExist($data['uname'], $uId, "admin");
+                                    $tokenClassify->checkTokenIfExist($data['uname'], $uId, "admin_selection");
                                     // $tokenClassify->checkOAuth($data['uname'], $uId, "admin");
                                     /* Token Getter */
                                     $tokenClassify->getOAuthToken($data['uname'], $uId);
@@ -213,6 +214,25 @@ class LoginCoreController extends DatabaseMigration implements LoginCoreInterfac
                             (object)[0 => array("key" => "account_not_found")]
                         );
                     }
+                }
+            }
+        }
+    }
+    public function updateOnChangeToAdmin($data)
+    {
+        $serverHelper = new Server();
+        $queryIndicator = new Queries();
+        if ($serverHelper->POSTCHECKER()) {
+            if ($this->php_prepare($queryIndicator->scanToken("scan/token"))) {
+                $this->php_bind(":owner", $data['tokenName']);
+                $this->php_exec();
+                if ($this->php_row_checker()) {
+                    if ($this->php_prepare($queryIndicator->updateSavedPlatform("update/platform"))) {
+                        $this->php_bind(":platform", "admin");
+                        $this->php_bind(":owner", $data['tokenName']);
+                        $this->php_exec();
+                    }
+                } else {
                 }
             }
         }

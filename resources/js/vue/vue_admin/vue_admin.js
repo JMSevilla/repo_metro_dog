@@ -25,19 +25,19 @@ new Vue({
                 console.log(r)
                 ResponseConfiguration.getResponse(r).then(__debounce => {
                     switch(true){
-                        case __debounce[0].key === "cookie_admin_exist":
+                        case __debounce[0].key === "cookie_admin_exist_platform_admin":
                             loading.close();
                             return true
-                        case __debounce[0].key === "cookie_admin_not_exist":
+                        case __debounce[0].key === "cookie_admin_exist_platform_admin_selection":
                             loading.close();
-                            return window.location.href = "index"
+                            return window.location.href = "adminSelection"
                         case __debounce[0].key === "cookie_invalid":
                             loading.close();
                             return window.location.href = "index"
                     }
                 })
             })
-            }, 3000)
+            }, 1000)
           }
     }
 })
