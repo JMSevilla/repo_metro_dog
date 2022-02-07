@@ -17,3 +17,9 @@ if (isset($_POST['loginTrigger']) == 1) {
     $loginModel = new Login();
     $loginModel->onLoginModels($data);
 }
+
+if (isset($_POST['update_on_select_admin']) == true) {
+    $data = ["tokenName" => $_POST['tokenName']];
+    $loginModel = new Login();
+    $loginModel->onUpdateAdminSelect($data);
+}

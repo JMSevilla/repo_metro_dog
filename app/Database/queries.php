@@ -15,6 +15,8 @@ interface QueryIndicator
     public function fetchAllBranch($args);
     public function checkIsTokenValid($args);
     public function updateToken($args);
+    public function getSavedPlatform($args);
+    public function updateSavedPlatform($args);
 }
 interface ServerInterface
 {
@@ -104,6 +106,20 @@ class Queries implements QueryIndicator
     {
         if ($args === "update/token") {
             $sql = "update tokenization set token=:token where istokenvalid=1 and tokenOwnerId=:id";
+            return $sql;
+        }
+    }
+    public function getSavedPlatform($args)
+    {
+        if ($args === "get/saved/platform") {
+            $tsql = "select tokenSavedPlatform from tokenization where tokenOwner=:owner";
+            return $tsql;
+        }
+    }
+    public function updateSavedPlatform($args)
+    {
+        if ($args === "update/platform") {
+            $sql = "update tokenization set tokenSavedPlatform=:platform where tokenOwner=:owner";
             return $sql;
         }
     }

@@ -58,9 +58,8 @@ new Vue({
         ).then(r => {
             ResponseConfiguration.getResponse(r).then(__debounce => {
                 switch(true){
-                    case __debounce[0].key === "cookie_admin_exist":
-                        loading.close();
-                        return true
+                    case __debounce[0].key === "cookie_admin_exist_platform_admin":
+                      return window.location.href = "admin"
                     case __debounce[0].key === "cookie_admin_not_exist":
                         loading.close();
                         return window.location.href = "index"
@@ -70,6 +69,14 @@ new Vue({
                 }
             })
         })
+        },
+        onadminselect: function(){
+            constructJS.updateOnAdminSelectionClientRequest().then(r => {
+              console.log(r)
+              ResponseConfiguration.getResponse(r).then(__debounce => {
+                console.log(__debounce)
+              })
+            })
         }
       }
 })

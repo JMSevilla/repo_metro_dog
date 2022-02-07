@@ -9,7 +9,7 @@
 
             <div class="row">
                 <div class="col-6">
-                    <a href="admin" class="btn btn-fix">
+                    <a href="admin" class="btn btn-fix" @click="onadminselect">
                         <img class="card-img-top" style="width:78%;" src="assets/adminselect.webp" alt="Administrator Image">
                         <div class="card-block ">
                             <p class="card-text "><small class="text-muted">click to proceed to admin dashboard</small></p>

@@ -78,11 +78,26 @@ class ScanCookie extends DatabaseMigration implements IScanCookie
                                     if ($row['userType'] === "1") {
                                         //admin
                                         if ($cookieHandler->tokenIsset('adminToken')) {
-                                            echo $this->php_responses(
-                                                true,
-                                                "single",
-                                                (object)[0 => array("key" => "cookie_admin_exist")]
-                                            );
+                                            if ($this->php_prepare($queryIndicator->getSavedPlatform("get/saved/platform"))) {
+                                                $this->php_bind(":owner", $args);
+                                                if ($this->php_exec()) {
+                                                    $get = $this->php_fetchRow();
+                                                    $savedplatform = $get['tokenSavedPlatform'];
+                                                    if ($savedplatform === "admin") {
+                                                        echo $this->php_responses(
+                                                            true,
+                                                            "single",
+                                                            (object)[0 => array("key" => "cookie_admin_exist_platform_admin")]
+                                                        );
+                                                    } else {
+                                                        echo $this->php_responses(
+                                                            true,
+                                                            "single",
+                                                            (object)[0 => array("key" => "cookie_admin_exist_platform_admin_selection")]
+                                                        );
+                                                    }
+                                                }
+                                            }
                                         } else {
                                             echo $this->php_responses(
                                                 true,
