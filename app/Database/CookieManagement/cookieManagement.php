@@ -15,6 +15,7 @@ interface ICookie
         $tokenName
     );
     public function tokenIsset($token_data);
+    public function tokenUnset($token_name);
 }
 
 class TokenParams
@@ -45,6 +46,16 @@ class CookieManagement implements ICookie
     public function tokenIsset($token_data)
     {
         return isset($_COOKIE[$token_data]);
+    }
+    public function tokenUnset($token_name)
+    {
+        if (isset($_COOKIE[$token_name])) {
+            unset($_COOKIE[$token_name]);
+            setcookie($token_name, null, -1, '/');
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

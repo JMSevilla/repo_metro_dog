@@ -17,6 +17,7 @@ interface QueryIndicator
     public function updateToken($args);
     public function getSavedPlatform($args);
     public function updateSavedPlatform($args);
+    public function updateOnLogout($args);
 }
 interface ServerInterface
 {
@@ -98,7 +99,7 @@ class Queries implements QueryIndicator
     public function checkIsTokenValid($args)
     {
         if ($args === "check/istokenvalid") {
-            $sql = "select istokenvalid from tokenization where tokenOwner=:owner and tokenOwnerId=:id";
+            $sql = "select * from tokenization where tokenOwner=:owner and tokenOwnerId=:id";
             return $sql;
         }
     }
@@ -112,14 +113,21 @@ class Queries implements QueryIndicator
     public function getSavedPlatform($args)
     {
         if ($args === "get/saved/platform") {
-            $tsql = "select tokenSavedPlatform from tokenization where tokenOwner=:owner";
+            $tsql = "select tokenSavedPlatform from tokenization where tokenOwner=:owner and istokenvalid=1";
             return $tsql;
         }
     }
     public function updateSavedPlatform($args)
     {
         if ($args === "update/platform") {
-            $sql = "update tokenization set tokenSavedPlatform=:platform where tokenOwner=:owner";
+            $sql = "update tokenization set tokenSavedPlatform=:platform where tokenOwner=:owner and istokenvalid=1";
+            return $sql;
+        }
+    }
+    public function updateOnLogout($args)
+    {
+        if ($args === "logout") {
+            $sql = "update tokenization set istokenvalid='0' where tokenOwner=:owner";
             return $sql;
         }
     }
