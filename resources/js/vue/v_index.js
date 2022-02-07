@@ -35,31 +35,20 @@ new Vue({
             if(!key || key == null) {
                 return false;
             } else { 
-                const loading = this.$loading({
-                    lock: true,
-                    text: 'Loading',
-                    spinner: 'el-icon-loading',
-                    background: 'rgba(0, 0, 0, 0.7)'
-                  });
-                setTimeout(() => {
-                    constructJS.scanTokenClientRequest(
-                        key
-                    ).then(r => {
-                        ResponseConfiguration.getResponse(r).then(__debounce => {
-                            switch(true){
-                                case __debounce[0].key === "cookie_admin_exist":
-                                    loading.close();
-                                    return window.location.href = "adminSelection"
-                                case __debounce[0].key === "cookie_admin_not_exist":
-                                    loading.close();
-                                    return false
-                                case __debounce[0].key === "cookie_invalid":
-                                    loading.close();
-                                    return false
-                            }
-                        })
+                constructJS.scanTokenClientRequest(
+                    key
+                ).then(r => {
+                    ResponseConfiguration.getResponse(r).then(__debounce => {
+                        switch(true){
+                            case __debounce[0].key === "cookie_admin_exist":
+                                return window.location.href = "adminSelection"
+                            case __debounce[0].key === "cookie_admin_not_exist":
+                                return false
+                            case __debounce[0].key === "cookie_invalid":
+                                return false
+                        }
                     })
-                }, 3000)
+                })
             }
         },
         checkEnter: function(){

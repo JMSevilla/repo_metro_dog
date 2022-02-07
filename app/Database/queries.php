@@ -14,6 +14,7 @@ interface QueryIndicator
     public function fetchAllQuestions($args);
     public function fetchAllBranch($args);
     public function checkIsTokenValid($args);
+    public function updateToken($args);
 }
 interface ServerInterface
 {
@@ -92,9 +93,17 @@ class Queries implements QueryIndicator
             return $sql;
         }
     }
-    public function checkIsTokenValid($args){
-        if($args === "check/istokenvalid"){
+    public function checkIsTokenValid($args)
+    {
+        if ($args === "check/istokenvalid") {
             $sql = "select istokenvalid from tokenization where tokenOwner=:owner and tokenOwnerId=:id";
+            return $sql;
+        }
+    }
+    public function updateToken($args)
+    {
+        if ($args === "update/token") {
+            $sql = "update tokenization set token=:token where istokenvalid=1 and tokenOwnerId=:id";
             return $sql;
         }
     }
