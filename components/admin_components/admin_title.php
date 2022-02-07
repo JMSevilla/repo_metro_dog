@@ -5,8 +5,8 @@
                 <i class="pe-7s-user icon-gradient bg-mean-fruit">
                 </i>
             </div>
-            <div>Metro Dog Dashboard
-                <div class="page-title-subheading">This is an example dashboard created using build-in elements and components.
+            <div><?php echo $title; ?>
+                <div class="page-title-subheading"><?php echo $description; ?>
                 </div>
             </div>
         </div>

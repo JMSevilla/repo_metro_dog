@@ -1,6 +1,8 @@
 <div id="admin_dash">
     <div class="container">
         <?php
+        $title = "Metro Dog Dashboard";
+        $description = "Here is your overall dashboard";
         include("components/admin_components/admin_title.php");
         ?>
 
