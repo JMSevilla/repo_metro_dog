@@ -1,7 +1,7 @@
 ELEMENT.locale(ELEMENT.lang.en)
+
 new Vue({
     el : '#v_usermanagement',
-
     data() {
         // Contact # Validation //
         var checkPhone = (rule, value, callback) => {
@@ -24,7 +24,8 @@ new Vue({
           }
 
         return {
-            dialogVisible: false,
+          
+          dialog: false,
           tableData: [{
             id:'1',
             date: '2016-05-03',
