@@ -1,7 +1,6 @@
 ELEMENT.locale(ELEMENT.lang.en)
 new Vue({
     el : '#v_usermanagement',
-
     data() {
         // Contact # Validation //
         var checkPhone = (rule, value, callback) => {

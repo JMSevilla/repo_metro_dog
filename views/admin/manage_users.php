@@ -12,7 +12,7 @@
     <!-- Start of Modal -->
     <el-form status-icon :model="addUser" :rules="rules" ref="ruleForm">
     <el-button type="primary" style="float:right;" @click="dialogVisible = true">Add User</el-button>
-   <el-dialog title="COMPLETE USER INFORMATION":visible.sync="dialogVisible" width="100px;" style="margin-left:10%; margin-top:-70px;" :before-close="handleClose">
+   <el-dialog title="COMPLETE USER INFORMATION":visible.sync="dialogVisible" width="100px;" :modal-append-to-body="false" style="margin-left:10%; margin-top:-70px;" :before-close="handleClose">
 
    <h4 style="margin-top:-20px;"><i class="fas fa-user"></i>&nbspPrimary Information</h4>
     <hr>
@@ -130,20 +130,20 @@
     <!-- Table --> 
     <el-table
     :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
-    style="width: 100%;">
+    style="width: 100%;" >
     <el-table-column label="ID" prop="id">
     </el-table-column>
-    <el-table-column label="Firstname"prop="name">
+    <el-table-column label="Firstname" prop="name">
     </el-table-column>
-    <el-table-column label="Lastname"prop="lname">
+    <el-table-column label="Lastname" prop="lname">
     </el-table-column>
-    <el-table-column label="Email Address"prop="email">
+    <el-table-column label="Email Address" prop="email">
     </el-table-column>
-    <el-table-column label="Contact Number"prop="contact">
+    <el-table-column label="Contact Number" prop="contact">
     </el-table-column>
-    <el-table-column label="Address"prop="address">
+    <el-table-column label="Address" prop="address">
     </el-table-column>
-    <el-table-column label="User Status"prop="status">
+    <el-table-column label="User Status" prop="status">
     </el-table-column>
 
 
