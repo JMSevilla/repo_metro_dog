@@ -18,6 +18,7 @@ interface QueryIndicator
     public function getSavedPlatform($args);
     public function updateSavedPlatform($args);
     public function updateOnLogout($args);
+    public function updateAdminChangePlatform($args);
 }
 interface ServerInterface
 {
@@ -128,6 +129,13 @@ class Queries implements QueryIndicator
     {
         if ($args === "logout") {
             $sql = "update tokenization set istokenvalid='0' where tokenOwner=:owner";
+            return $sql;
+        }
+    }
+    public function updateAdminChangePlatform($args)
+    {
+        if ($args === "change/adminPlatform") {
+            $sql = "update tokenization set tokenSavedPlatform=:platform where tokenOwner=:owner and istokenvalid=1";
             return $sql;
         }
     }

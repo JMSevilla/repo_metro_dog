@@ -1,6 +1,6 @@
 ELEMENT.locale(ELEMENT.lang.en)
 import constructJS from "../main.js"
-import ResponseConfiguration from "../Response.js";
+import ResponseConfiguration from "../Response.js"
 new Vue({
     el : '#v_adminSelection',
 
@@ -73,7 +73,7 @@ new Vue({
         })
         },
         onadminselect: function(){
-            constructJS.updateOnAdminSelectionClientRequest().then(r => {
+            constructJS.updateOnAdminChangePlatformClientRequest().then(r => {
               console.log(r)
               ResponseConfiguration.getResponse(r).then(__debounce => {
                 console.log(__debounce)

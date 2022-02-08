@@ -17,13 +17,13 @@
         <table class="table table-hover table-bordered table-outline">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
                     <th scope="col">First</th>
                     <th scope="col">Last</th>
                     <th scope="col">Handle</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody> 
                 <tr>
                     <th scope="row">1</th>
                     <td>Mark</td>
@@ -44,9 +44,6 @@
             </tbody>
         </table>
 
-
-
-
         <div class="block" style="margin-top:20px;">
             <el-pagination background layout="prev, pager, next" :total="50">
             </el-pagination>
@@ -56,7 +53,9 @@
     <!-- <el-dialog title="COMPLETE USER INFORMATION" :visible.sync="dialogVisible" width="100px;" style="margin-left:10%; margin-top:-70px;" :before-close="handleClose">
 
     </el-dialog> -->
-    <el-dialog :modal-append-to-body="false" title="Tips" :visible.sync="dialog" width="50%" :before-close="handleClose">
+
+    <!-- Start of Modal -->
+    <el-dialog :modal-append-to-body="false" title="Tips" :visible.sync="dialog" width="50%" style="margin-top:-70px;" :before-close="handleClose">
         <el-form status-icon :model="addUser" :rules="rules" ref="ruleForm">
             <h4 style="margin-top:-20px;"><i class="fas fa-user"></i>&nbspPrimary Information</h4>
             <hr>
@@ -169,4 +168,5 @@
             <el-button type="primary" @click="dialog = false">Save Changes</el-button>
         </span>
     </el-dialog>
+    <!-- End of Modal -->
 </div>

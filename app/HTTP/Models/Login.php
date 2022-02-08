@@ -8,6 +8,7 @@ interface LoginInterface
     public function onLoginModels($data);
     public function onUpdateAdminSelect($data);
     public function onUpdateAdminSelectionLogout($data);
+    public function onUpdateAdminChangePlatform($data);
 }
 
 class Login extends LoginController implements LoginInterface
@@ -31,5 +32,10 @@ class Login extends LoginController implements LoginInterface
     {
         $callback = new LoginCoreController();
         $callback->updateOnLogoutCore($data);
+    }
+    public function onUpdateAdminChangePlatform($data)
+    {
+        $callback = new LoginCoreController();
+        $callback->updateOnAdminChangePlatform($data);
     }
 }

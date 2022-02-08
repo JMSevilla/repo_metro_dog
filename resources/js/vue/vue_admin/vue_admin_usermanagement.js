@@ -1,5 +1,4 @@
 ELEMENT.locale(ELEMENT.lang.en)
-
 new Vue({
     el : '#v_usermanagement',
     data() {
@@ -114,6 +113,7 @@ new Vue({
               })
               .catch(_ => {});
           }
+          
 
       }
 })
