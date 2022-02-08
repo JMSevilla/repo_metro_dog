@@ -70,7 +70,7 @@
                                         <h6 tabindex="-1" class="dropdown-header">Header</h6>
                                         <button type="button" tabindex="0" class="dropdown-item" @click="changePlatform()"><i class="fas fa-exchange-alt"></i>&nbspChange Platform</button>
                                         <div tabindex="-1" class="dropdown-divider"></div>
-                                        <button type="button" tabindex="0" class="dropdown-item" @click ="onLogout()"><i class="fas fa-sign-out-alt"></i>&nbspLog Out</button>
+                                        <button type="button" tabindex="0" class="dropdown-item" @click ="onLogout()" v-loading.fullscreen.lock="fullscreenLoadingOnLogout"><i class="fas fa-sign-out-alt"></i>&nbspLog Out</button>
                                     </div>
                                 </div>
                             </div>

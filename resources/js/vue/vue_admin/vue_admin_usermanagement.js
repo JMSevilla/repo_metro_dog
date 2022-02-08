@@ -23,7 +23,8 @@ new Vue({
           }
 
         return {
-            dialogVisible: false,
+          
+          dialog: false,
           tableData: [{
             id:'1',
             date: '2016-05-03',
@@ -112,6 +113,7 @@ new Vue({
               })
               .catch(_ => {});
           }
+          
 
       }
 })

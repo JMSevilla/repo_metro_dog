@@ -29,6 +29,7 @@ interface LoginCoreInterface
     public function ClientLogin($data);
     public function updateOnChangeToAdmin($data);
     public function updateOnLogoutCore($data);
+    public function updateOnAdminChangePlatform($data);
 }
 
 interface ITokenization
@@ -237,6 +238,33 @@ class LoginCoreController extends DatabaseMigration implements LoginCoreInterfac
                         $this->php_bind(":platform", "admin");
                         $this->php_bind(":owner", $data['tokenName']);
                         $this->php_exec();
+                    }
+                } else {
+                }
+            }
+        }
+    }
+    // Admin Change Platform
+    public function updateOnAdminChangePlatform($data)
+    {
+        
+        $serverHelper = new Server();
+        $queryIndicator = new Queries();
+        if ($serverHelper->POSTCHECKER()) {
+            if ($this->php_prepare($queryIndicator->scanToken("scan/token"))) {
+                $this->php_bind(":owner", $data['tokenName']);
+                $this->php_exec();
+                if ($this->php_row_checker()) {
+                    if ($this->php_prepare($queryIndicator->updateAdminChangePlatform("change/adminPlatform"))) {
+                        $this->php_bind(":platform", "admin_selection");
+                        $this->php_bind(":owner", $data['tokenName']);
+                        if($this->php_exec()){
+                            echo $this->php_responses(
+                                true,
+                                "single",
+                                (object)[0 => array("key" => "change_platform")]
+                            );
+                        }
                     }
                 } else {
                 }

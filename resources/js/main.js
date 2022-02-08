@@ -91,6 +91,24 @@ class RequestConfiguration {
         })
         return promise;
     }
+    // Chage Platform Admin Dashboard
+    updateOnAdminChangePlatformSelect() {
+        const promise = new Promise((resolve) => {
+            $.ajax({
+                method : 'post',
+                url : state_initiate.instance.app + state_initiate.instance.HelperConfig.checkUserHelper.Route,
+                data : {
+                    update_on_admin_selection : true,
+                    tokenName : localStorage.getItem('key_identifier')
+                },
+                success : function(response){
+                    return resolve(response)
+                }
+            })
+        })
+        return promise;
+    }
+
     adminSelectionLogout(){
         const promise = new Promise((resolve) => {
             $.ajax({
@@ -106,7 +124,7 @@ class RequestConfiguration {
             })
         })
         return promise;
-    }
+    }  
 }
 
 class RequestVerifier extends RequestConfiguration { 
@@ -144,6 +162,10 @@ class RequestVerifier extends RequestConfiguration {
     updateOnAdminSelectionLogoutClientRequest(){
         return this.adminSelectionLogout()
     }
+    updateOnAdminChangePlatformClientRequest(){
+        return this.updateOnAdminChangePlatformSelect()
+    }
+
 }
 
 export default new RequestVerifier();

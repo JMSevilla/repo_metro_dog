@@ -29,3 +29,8 @@ if (isset($_POST['update_on_logout_admin']) == true) {
     $loginModel = new Login();
     $loginModel->onUpdateAdminSelectionLogout($data);
 }
+if (isset($_POST['update_on_admin_selection']) == true) {
+    $data = ["tokenName" => $_POST['tokenName']];
+    $loginModel = new Login();
+    $loginModel->onUpdateAdminChangePlatform($data);
+}

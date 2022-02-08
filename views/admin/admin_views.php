@@ -5,8 +5,6 @@
         $description = "Here is your overall dashboard";
         include("components/admin_components/admin_title.php");
         ?>
-
-
     </div>
     <div class="container-fluid">
         <div style="margin-top: 20px;" class="row">
