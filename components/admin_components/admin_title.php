@@ -1,4 +1,4 @@
-<div class="app-page-title" style="margin-top : 30px;">
+<div class="app-page-title" style="margin-top : 10px;">
     <div class="page-title-wrapper">
         <div class="page-title-heading">
             <div class="page-title-icon">

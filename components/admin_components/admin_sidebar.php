@@ -40,13 +40,55 @@
                             Dashboard
                         </a>
                     </li>
-                    <li class="app-sidebar__heading">User Management</li>
+
+                    <li class="app-sidebar__heading">User Access Management</li>
                     <li>
-                        <a href="admin_add_user" class="mm-active">
-                            <i class="metismenu-icon pe-7s-plus">
+                        <a href="usermanagement" class="mm-active">
+                            <i class="metismenu-icon pe-7s-user">
+                            </i>Manage Users
+                        </a>
+                        <a href="admin" class="mm-active">
+                            <i class="metismenu-icon pe-7s-add-user">
                             </i>Add User
                         </a>
                     </li>
+
+                    <li class="app-sidebar__heading">Inventory Management</li>
+                    <li>
+                    <a href="admin" class="mm-active">
+                            <i class="metismenu-icon pe-7s-users"></i>
+                            Suppliers
+                        </a>
+                        <a href="admin" class="mm-active">
+                            <i class="metismenu-icon pe-7s-shopbag"></i>
+                            Products
+                        </a>
+
+                    <li class="app-sidebar__heading">Reports Management</li>
+                    <li>
+                        <a href="admin" class="mm-active">
+                            <i class="metismenu-icon pe-7s-note2"></i>
+                            Sales Report
+                        </a>
+
+                        <a href="admin" class="mm-active">
+                            <i class="metismenu-icon pe-7s-notebook"></i>
+                            Inventory Reports
+                        </a>
+
+                        <a href="admin" class="mm-active">
+                            <i class="metismenu-icon pe-7s-cash"></i>
+                            Payroll Reports
+                        </a>
+
+                        <li class="app-sidebar__heading">Expenses Management</li>
+                        <li>
+
+                        <a href="admin" class="mm-active">
+                            <i class="metismenu-icon pe-7s-piggy"></i>
+                            Bills Expenses
+                        </a>
+
                 </ul>
             </div>
         </div>
