@@ -73,7 +73,7 @@ new Vue({
         })
         },
         onadminselect: function(){
-            constructJS.updateOnAdminChangePlatformClientRequest().then(r => {
+            constructJS.updateOnAdminSelectionClientRequest().then(r => {
               console.log(r)
               ResponseConfiguration.getResponse(r).then(__debounce => {
                 console.log(__debounce)
