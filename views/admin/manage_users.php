@@ -99,7 +99,7 @@
                 <div class="col">
                     <el-form-item label="Metro Dog Branch" prop="mdbranch">
                         <el-select style="width: 100%;" v-model="addUser.mdbranch" filterable placeholder="Select Branch">
-                            <el-option>
+                            <el-option v-for="item in optionsBranch" :key="item.branchName" :label="item.branchName" :value="item.branchName">
                             </el-option>
                         </el-select>
                     </el-form-item>
@@ -139,7 +139,9 @@
                 <div class="col">
                     <el-form-item label="User Type (Log in as)" prop="user_type">
                         <el-select style="width: 100%;" v-model="addUser.user_type" filterable placeholder="Select User Type">
-                            <el-option>
+                            <el-option value="1" label="Administrator">
+                            </el-option>
+                            <el-option value="2" label="Cashier">
                             </el-option>
                         </el-select>
                     </el-form-item>
@@ -148,7 +150,7 @@
                 <div class="col">
                     <el-form-item label="Security Question" prop="sec_question">
                         <el-select style="width: 100%;" v-model="addUser.sec_question" filterable placeholder="Select security question">
-                            <el-option>
+                            <el-option v-for="item in optionsQuestions" :key="item.question" :label="item.question" :value="item.question">
                             </el-option>
                         </el-select>
                     </el-form-item>
@@ -165,7 +167,7 @@
         </el-form>
         <span slot="footer" class="dialog-footer">
             <el-button @click="dialog = false">Cancel</el-button>
-            <el-button type="primary" @click="dialog = false">Save Changes</el-button>
+            <el-button type="primary" @click="onFinish('ruleForm')">Save Changes</el-button>
         </span>
     </el-dialog>
     <!-- End of Modal -->

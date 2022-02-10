@@ -18,6 +18,22 @@ if (isset($_POST['trigger']) == 1) {
     $callback->IAdminReg($data);
 }
 
+if (isset($_POST['uamtrigger']) == 1) {
+    $data = [
+        "fname" => $_POST['firstname'],
+        "lname" => $_POST['lastname'],
+        "PA" => $_POST['primary_address'],
+        "SA" => $_POST['secondary_address'],
+        "CN" => $_POST['contactNumber'],
+        "email" => $_POST['email'],
+        "username" => $_POST['username'], "pwd" => $_POST['password'],
+        "uType" => $_POST['user_type'], "SQ" => $_POST['sec_question'], 
+        "secA" => $_POST['sec_answer'], "branch" => $_POST['mdbranch']
+    ];
+    $callback = new AdminRegistration();
+    $callback->UsermanagementAddUser($data);
+}
+
 
 if (isset($_POST['getQuestions']) == true) {
     $callback = new AdminRegistration();

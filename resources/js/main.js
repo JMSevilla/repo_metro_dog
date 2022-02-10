@@ -19,6 +19,15 @@ class RequestConfiguration {
         })
         return promise;
     }
+    postUserRegistration(callback){
+        const promise = new Promise(resolve => {
+            $.post(state_initiate.instance.app + state_initiate.instance.HelperConfig.adminRegHelper.Route, callback, (response)=> {
+                return resolve(response)
+            })
+        })
+        return promise;
+    }
+
     async postLogin(callback) { 
         const promise = new Promise(resolve => {
             $.post(state_initiate.instance.app + state_initiate.instance.HelperConfig.checkUserHelper.Route, callback, (response) => {
@@ -136,6 +145,11 @@ class RequestVerifier extends RequestConfiguration {
     postAdmin_ClientRequest(payload){
         if(payload.trigger === 1){
             return this.postAdminRegistration(payload)
+        }
+    }
+    postUserRegistration_ClientRequest(payload){
+        if(payload.uamtrigger === 1){
+            return this.postUserRegistration(payload)
         }
     }
     postLogin_ClientRequest(payload) {
