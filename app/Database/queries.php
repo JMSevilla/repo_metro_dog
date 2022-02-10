@@ -5,6 +5,7 @@ interface QueryIndicator
 {
     public function checkUser($args);
     public function InsertAdminReg($table, $args);
+    public function InsertUserReg($table, $args);
     public function LoginQuery($table, $args);
     public function checkToken($table, $args);
     public function addNewToken($table, $args);
@@ -37,6 +38,13 @@ class Queries implements QueryIndicator
     public function InsertAdminReg($table, $args)
     {
         if ($args === "adminReg") {
+            $sql = "insert into " . $table . " values(default, :fname, :lname, :uname, :pwd, :uType, :uStatus, :imgURL, current_timestamp, :PA, :SA, :CN, :email, :SQ, :secA, :branch)";
+            return $sql;
+        }
+    }
+    public function InsertUserReg($table, $args)
+    {
+        if ($args === "addUserReg") {
             $sql = "insert into " . $table . " values(default, :fname, :lname, :uname, :pwd, :uType, :uStatus, :imgURL, current_timestamp, :PA, :SA, :CN, :email, :SQ, :secA, :branch)";
             return $sql;
         }

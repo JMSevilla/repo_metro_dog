@@ -1,4 +1,6 @@
 ELEMENT.locale(ELEMENT.lang.en)
+import __constructJS from "../../main.js"
+import responseConfiguration from "../../Response.js"
 new Vue({
     el : '#v_usermanagement',
     data() {
@@ -21,7 +23,7 @@ new Vue({
               }
             }, 100)
           }
-
+          
         return {
           
           dialog: false,
@@ -50,13 +52,14 @@ new Vue({
             lname: 'Tom',
             address: 'No. 189, Grove St, Los Angeles'
           }],
-          addUser: {
-                firstname : '', lastname: '',     primary_address : '', secondary_address: '', mdbranch: '',
-                contactNumber: '', email: '', username: '', password: '', conpass: '',
-                sec_question : '', sec_answer: '', user_type: ''
-          },
+          addUser : {
+            firstname : '', lastname: '',     primary_address : '', secondary_address: '', mdbranch: '',
+            contactNumber: '', email: '', username: '', password: '', conpass: '',
+            sec_question : '', sec_answer: '', user_type: '', uamtrigger: 1
+        },
           search: '',
-
+          optionsQuestions: [],
+          optionsBranch: [],
         rules: {
             firstname : [
                 {required : true, message: 'Please enter firstname'}
@@ -105,8 +108,67 @@ new Vue({
         }
      };
 },
+      created(){
+        this.fetchQuestion();
+        this.fetchBranch();
+      },
         methods: {
-        handleClose(done) {
+          fetchQuestion: function() {
+            __constructJS.fetchQuestionClientRequest().then(r => {
+                responseConfiguration.getResponse(r).then(__debounce => {
+                    this.optionsQuestions = __debounce[0].key
+                })
+            })
+        },
+
+        fetchBranch: function() {
+            __constructJS.fetchBranchClientRequest().then(r => {
+                responseConfiguration.getResponse(r).then(__debounce => {
+                    this.optionsBranch = __debounce[0].key
+                })
+            })
+        },
+        onFinish: function(ruleForm){
+          if(this.addUser.password!== this.addUser.conpass)
+          {
+              this.$notify.error({
+                  title: 'Error',
+                  message: 'Password doesn\'t match', 
+                  offset: 100
+                });
+          }
+          this.$refs[ruleForm].validate((valid) => {
+              if (valid) {
+                this.$confirm('Are you sure you want to save this as user?', 'Adding User Confirmation', {
+                  confirmButtonText: 'OK',
+                  cancelButtonText: 'Cancel',
+                  type: 'info'
+                }).then(() => {
+                  setTimeout(() => {
+                      __constructJS.postUserRegistration_ClientRequest(this.addUser).then((r) => {
+                          console.log(r)
+                          responseConfiguration.getResponse(r).then(__debounce => {
+                              switch(true) {
+                                  case __debounce[0].key === "user_registration":
+                                      this.$notify.success({
+                                          title: 'Success',
+                                          message: 'User Successfully Registered',
+                                          offset: 100
+                                        });
+                              }
+                          })
+                      })
+                  }, 3000)
+                })
+
+              }
+              else {
+                  return false;
+              }
+              });
+      },
+
+          handleClose(done) {
             this.$confirm('Are you sure to cancel adding user?')
               .then(_ => {
                 done();

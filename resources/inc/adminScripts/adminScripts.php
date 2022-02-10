@@ -14,3 +14,4 @@
 <script src="resources/js/vue/vue_admin/vue_admin_sidebar.js" type="module"></script>
 <script src="resources/js/vue/vue_admin/vue_admin_usermanagement.js" type="module"></script>
 <script src="resources/js/main.js" type="module"></script>
+<script src="resources/js/Response.js" type="module"></script>
