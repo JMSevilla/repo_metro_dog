@@ -26,7 +26,7 @@ new Vue({
     
      return {
        
-            active : 3,
+            active : 1,
             adminTask : {
                 firstname : '', lastname: '',     primary_address : '', secondary_address: '', mdbranch: '',
                 contactNumber: '', email: '', username: '', password: '', conpass: '',
@@ -141,7 +141,7 @@ new Vue({
                                       });
                                       this.fullscreenLoading = false;
                                       setTimeout(() => {
-                                        window.location.href = "http://localhost/metrodog"
+                                        window.location.href = "http://localhost/repo_metrodog"
                                       }, 3000)
                                       return true;
                             }
