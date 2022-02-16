@@ -20,10 +20,8 @@
                 <hr>
                 <el-input type="text" clearable style="margin-bottom: 10px;" placeholder="Username" v-model="adminTask.username" disabled="true"></el-input>
                 <el-input type="text" clearable show-password style="margin-bottom: 10px;" placeholder="Password" v-model="adminTask.password" disabled="true"></el-input>
-                <el-select style="width: 100%;" filterable placeholder="Security question" v-model="adminTask.sec_question" disabled="true">
-                    <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-                    </el-option>
-                </el-select>
+
+                <el-input type="text" clearable style="margin-bottom: 10px; margin-top:10px;" placeholder="Security answer" v-model="adminTask.sec_question" disabled="true"></el-input>
                 <el-input type="text" clearable style="margin-bottom: 10px; margin-top:10px;" placeholder="Security answer" v-model="adminTask.sec_answer" disabled="true"></el-input>
 
             </el-card>
