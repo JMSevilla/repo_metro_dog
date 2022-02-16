@@ -22,12 +22,12 @@ new Vue({
         oncheckUser : function() {
             constructJS.checkUser_ClientRequest(this.checkObject).then(r => {
                 console.log(r)
-                ResponseConfiguration.getResponse(r).then(resp => {
-                    switch(true){
-                        case resp[0].key == 'admin_not_exist':
-                            return window.location.href = "http://localhost/metrodog/admin_registration"
-                    }
-                })
+                // ResponseConfiguration.getResponse(r).then(resp => {
+                //     switch(true){
+                //         case resp[0].key == 'admin_not_exist':
+                //             return window.location.href = "http://localhost/metrodog/admin_registration"
+                //     }
+                // })
             })
         },
         scanningToken: function(){
@@ -38,6 +38,7 @@ new Vue({
                 constructJS.scanTokenClientRequest(
                     key
                 ).then(r => {
+                    console.log(r)
                     ResponseConfiguration.getResponse(r).then(__debounce => {
                         switch(true){
                             case __debounce[0].key === "cookie_admin_exist_platform_admin":
