@@ -47,10 +47,6 @@
                             <i class="metismenu-icon pe-7s-user">
                             </i>Manage Users
                         </a>
-                        <a href="admin" class="mm-active">
-                            <i class="metismenu-icon pe-7s-add-user">
-                            </i>Add User
-                        </a>
                     </li>
 
                     <li class="app-sidebar__heading">Inventory Management</li>
