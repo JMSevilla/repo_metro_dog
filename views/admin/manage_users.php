@@ -59,9 +59,10 @@
         <el-form status-icon :model="addUser" :rules="rules" ref="ruleForm">
             <h4 style="margin-top:-20px;"><i class="fas fa-user"></i>&nbspPrimary Information</h4>
             <hr>
+            
+
+
             <div class="row" style="margin-top:10px;">
-
-
                 <div class="col">
                     <el-form-item label="Firstname" prop="firstname">
                         <el-input type="text" clearable placeholder="Enter firstname" v-model="addUser.firstname"></el-input>
@@ -114,6 +115,7 @@
 
             <h4 style="margin-top:10px;"><i class="fas fa-user-shield"></i>&nbspUser Credentials and Password</h4>
             <hr>
+            
             <div class="row" style="margin-top:10px;">
 
                 <div class="col">

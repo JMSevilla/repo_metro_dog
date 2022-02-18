@@ -3,6 +3,7 @@
 <meta name="description" content="This is an example dashboard created using build-in elements and components.">
 <meta name="msapplication-tap-highlight" content="no">
 <link href="https://demo.dashboardpack.com/architectui-html-free/main.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
 
 
 
