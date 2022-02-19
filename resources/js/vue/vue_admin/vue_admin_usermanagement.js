@@ -128,7 +128,8 @@ new Vue({
                 })
             })
         },
-        onFinish: function(ruleForm){
+
+         onFinish: function(ruleForm){
           if(this.addUser.password!== this.addUser.conpass)
           {
               this.$notify.error({
@@ -136,7 +137,8 @@ new Vue({
                   message: 'Password doesn\'t match', 
                   offset: 100
                 });
-          }
+                return false;
+          } else {
           this.$refs[ruleForm].validate((valid) => {
               if (valid) {
                 this.$confirm('Are you sure you want to save this as user?', 'Adding User Confirmation', {
@@ -154,18 +156,34 @@ new Vue({
                                           title: 'Success',
                                           message: 'User Successfully Registered',
                                           offset: 100
-                                        });
+                                        });     
+                                        this.addUser.firstname = '';
+                                        this.addUser.lastname = '';
+                                        this.addUser.primary_address = '';
+                                        this.addUser.secondary_address = '';
+                                        this.addUser.mdbranch = '';
+                                        this.addUser.contactNumber = '';
+                                        this.addUser.email = '';
+                                        this.addUser.username = '';
+                                        this.addUser.password = '';
+                                        this.addUser.conpass = '';
+                                        this.addUser.sec_question = '';
+                                        this.addUser.sec_answer = '';
+                                        this.addUser.user_type = '';
                               }
                           })
                       })
                   }, 3000)
                 })
-
+                    
               }
               else {
                   return false;
               }
               });
+            }
+
+
       },
 
           handleClose(done) {

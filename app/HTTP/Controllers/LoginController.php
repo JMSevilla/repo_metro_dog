@@ -189,14 +189,13 @@ class LoginCoreController extends DatabaseMigration implements LoginCoreInterfac
                                         "single",
                                         (object)[0 => array("key" => $logged_array)]
                                     );
-                                } else {
-                                    //cashier
+                                } 
+                                    //cashier 
                                     echo $this->php_responses(
                                         true,
                                         "single",
                                         (object)[0 => array("key" => "success_cashier")]
                                     );
-                                }
                             } else {
                                 // account disable
                                 echo $this->php_responses(

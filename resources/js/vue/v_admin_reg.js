@@ -141,7 +141,7 @@ new Vue({
                                       });
                                       this.fullscreenLoading = false;
                                       setTimeout(() => {
-                                        window.location.href = "http://localhost/metrodog"
+                                        window.location.href = "http://localhost:8080/repo_metro_dog/"
                                       }, 3000)
                                       return true;
                             }

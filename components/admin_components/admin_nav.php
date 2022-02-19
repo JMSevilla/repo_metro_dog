@@ -65,7 +65,7 @@
                                         <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                     </a>
                                     <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                        <button type="button" tabindex="0" class="dropdown-item"><i class="fas fa-user"></i>&nbspUser Account</button>
+                                       <a href="profilemanagement" style="text-decoration:none;"><button type="button" tabindex="0" class="dropdown-item"><i class="fas fa-user"></i>&nbspMy Profile</button></a>
                                         <button type="button" tabindex="0" class="dropdown-item"><i class="fas fa-cog"></i>&nbspSettings</button>
                                         <h6 tabindex="-1" class="dropdown-header">Header</h6>
                                         <button type="button" tabindex="0" class="dropdown-item" @click="changePlatform()"><i class="fas fa-exchange-alt"></i>&nbspChange Platform</button>

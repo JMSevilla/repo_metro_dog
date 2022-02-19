@@ -5,7 +5,9 @@
                 <i class="pe-7s-user icon-gradient bg-mean-fruit">
                 </i>
             </div>
+            
             <div><?php echo $title; ?>
+            
                 <div class="page-title-subheading"><?php echo $description; ?>
                 </div>
             </div>
