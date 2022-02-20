@@ -1,4 +1,5 @@
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+
     <?php
     include("components/admin_components/admin_header.php");
     ?>
