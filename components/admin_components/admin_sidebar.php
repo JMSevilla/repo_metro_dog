@@ -51,7 +51,7 @@
 
                     <li class="app-sidebar__heading">Supplier Management</li>
                     <li>
-                        <a href="usermanagement" class="mm-active">
+                        <a href="suppliermanagement" class="mm-active">
                             <i class="metismenu-icon pe-7s-users">
                             </i>Suppliers
                         </a>
