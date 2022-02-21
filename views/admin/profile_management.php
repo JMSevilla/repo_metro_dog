@@ -155,7 +155,7 @@
                           <el-input type="password" show-password clearable placeholder="Confirm Password"></el-input>
                           </div>
                         </div>
-                     </div>
+                    </div>
            
                 <div style="margin-top:40px; text-align:right">
                 <el-button type="success" @click="updateProfile()">Save Changes</el-button>    

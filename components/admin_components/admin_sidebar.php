@@ -37,7 +37,7 @@
                     <li>
                         <a href="admin" class="mm-active">
                             <i class="metismenu-icon pe-7s-rocket"></i>
-                            Dashboard
+                             Dashboard
                         </a>
                     </li>
 
@@ -49,16 +49,27 @@
                         </a>
                     </li>
 
+                    <li class="app-sidebar__heading">Supplier Management</li>
+                    <li>
+                        <a href="suppliermanagement" class="mm-active">
+                            <i class="metismenu-icon pe-7s-users">
+                            </i>Suppliers
+                        </a>
+
+                        <a href="usermanagement" class="mm-active">
+                            <i class="metismenu-icon pe-7s-speaker">
+                            </i>Sales Order
+                        </a>
+                    </li>
+
+
                     <li class="app-sidebar__heading">Inventory Management</li>
                     <li>
-                    <a href="admin" class="mm-active">
-                            <i class="metismenu-icon pe-7s-users"></i>
-                            Suppliers
-                        </a>
                         <a href="admin" class="mm-active">
                             <i class="metismenu-icon pe-7s-shopbag"></i>
                             Products
                         </a>
+                    </li>
 
                     <li class="app-sidebar__heading">Reports Management</li>
                     <li>
@@ -76,7 +87,7 @@
                             <i class="metismenu-icon pe-7s-cash"></i>
                             Payroll Reports
                         </a>
-
+                    </li>
                         <li class="app-sidebar__heading">Expenses Management</li>
                         <li>
 
@@ -84,6 +95,7 @@
                             <i class="metismenu-icon pe-7s-piggy"></i>
                             Bills Expenses
                         </a>
+                        </li>
 
                 </ul>
             </div>

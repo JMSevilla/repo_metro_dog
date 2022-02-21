@@ -55,7 +55,7 @@
     </el-dialog> -->
 
     <!-- Start of Modal -->
-    <el-dialog :modal-append-to-body="false" title="Tips" :visible.sync="dialog" width="50%" style="margin-top:-70px;" :before-close="handleClose">
+    <el-dialog :modal-append-to-body="false" :visible.sync="dialog" width="50%" style="margin-top:-70px;" :before-close="handleClose">
         <el-form status-icon :model="addUser" :rules="rules" ref="ruleForm">
             <h4 style="margin-top:-20px;"><i class="fas fa-user"></i>&nbspPrimary Information</h4>
             <hr>
